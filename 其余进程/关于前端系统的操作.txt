@@ -1,0 +1,38 @@
+词汇
+spaltenreihenfolge列顺序
+das Kriterium规则，规范
+Palett=pallets托盘
+lieferant供应商
+Greifeinheiten抓取单元
+
+·
+基本操作
+1.Autostart是快速打开常用项目的，自己配置，直接拉进去即可
+
+2.Lieferscheinfassung:funcion->wareneingang->lieferscheinerfassung
+  GR300
+
+3.每个码的前缀都是英文的缩写
+  GR:Goods Receiving
+  TCS:Transport Control System
+  IM: Inventorz management
+
+
+4.左上方的井字方格显示所有已经打开的dialog
+
+5.模糊搜索*表达一串字符，_表示一个字符
+
+
+
+Wareneingang（货物进仓）
+1、当货物送达lieferscheinerfassung过后生成的（GR300）
+2.GR100 Einlieferunguebersicht
+  定义Vereinahmung:货物的库存需要被清点，数量和完整性也要检查。 随后打包装箱或者包装，然后收入存储
+3.GR400 Vereinahmung
+  Vorbereitung der Vereinahmung ist üstung
+4.Ladeneinheiten(IM110)：beschreiben die konkrete Ladehilfsmittel(LHM) oder Behaler
+  Quant:最基本需要的数量
+
+5.TCS100：TransPortAufgaben
+送过后再返回IM110就能看到状态改变了
+  

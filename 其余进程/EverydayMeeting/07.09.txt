@@ -1,0 +1,27 @@
+问题：
+关于 Arbeits Platz的，应该是我的试用装的系统没有transport的不见
+
+
+
+1.what I have done?
+  install the database, start iwf and Bend. Learning different dialog on the K.Motion WMS
+  the process blocked by the problem of arbeitzplatz
+  
+  Component Creation and Know the construction of the Project
+  still the version control of SVN
+   
+  Spring Data JPA, repository, and mapping
+
+  Basic Archtekture of integrition test
+
+  
+
+2.what I want to learn
+  continue to learn K.Motion WMS
+  the Construction Architecture of Project files  
+
+   Formally start learning cucumber syntax
+
+
+cumcuber has issues with integrited in eclipse
+  

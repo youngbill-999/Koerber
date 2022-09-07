@@ -1,0 +1,8 @@
+https://confluence.inconso.de/display/LEXPDINWMSXBEND/QUICK+006+-+Selecting+and+Writing+Data
+
+
+code gernerator
+https://confluence.inconso.de/display/LEXPDINWMSXBEND/DEV+002.1.1+Bend+Code+Generator
+
+具体例子
+https://confluence.inconso.de/display/LEXPDINWMSXBEND/BEND+002.6.1.1+BendRepository%3A+Available+Queries
