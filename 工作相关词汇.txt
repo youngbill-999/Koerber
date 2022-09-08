@@ -1,7 +1,10 @@
-stock 股票，存货
+stock 股票，存货，存量
 fictional 虚构的
 load unit(LU)
-
+demension尺寸
+lot management批量操作
+batch or quant批次或者数量
+receipt and issue接受和发放
 
 maintenance维护保养
 condensed and centralized浓缩和集中
@@ -11,3 +14,4 @@ enclosed 附属的
 substitution替换替代
 thorough全面的彻底的
 withdraw撤销
+concerned可能的
