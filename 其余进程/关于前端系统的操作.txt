@@ -35,4 +35,48 @@ Wareneingang（货物进仓）
 
 5.TCS100：TransPortAufgaben
 送过后再返回IM110就能看到状态改变了
+
+
+
+从头开始
+GR400，WB200，PRT400，DS100,TOP250,IM040,
+1.Article
+ART100 for all the goods
+ART110 basic data and show label in the window below,比如要加注这款巧克力是超级甜的
+ART120 当ART200中对商品加上了插图或者一些其他数据，将在这个dialogue显示
+ART130 其余的site specific data（重点是site）
+       如果物品需要在某一流程步骤中输入序列号（例如在VAS或采集时），则在此显示该步骤的代码。（serial number management）
+       Preferred Store-In Zone:在ART200中指定
+       ClassABC是指的吞吐量或者需求量
+ART140 Shippable表示了该商品是否可以运输
+ART800 任何在ART200中对商品进行的修改在这里都会有显示
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   

@@ -1,0 +1,3 @@
+如果要访问GR300，PRT015添加我的Terminal，然后需要在WC200（workcentre中找到缺少的lieferungsschein相关条目下添加我的terminal）
+node显示不出来是因为边上被隐藏了
+Component Overview一般是TT500
