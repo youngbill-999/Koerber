@@ -58,20 +58,21 @@ ART160 有一些特殊的文字性的信息如果需要显示，则有这个dial
 
 
 
-
-
+2、Occupation Management
+remaining capacity type： 用于计算剩余容量的尺度和规则（以什么样的方式展现剩余的容量）TOP260 location中有显示
+比如在Percent LU下，剩余容量就按照百分比来展示
        
 
+关于动态剩余容量
+stack height and type
+location在系统中值得是一个拜访货物的位置
+OM010 LU TYPE：定义了那些LU TYPE可以放在那些Location TYPE里
+              以及单个LU TYPE的LU在该location type的单个Location空间中的占比，有一些超过一个单位location的这个百分比就有可能大于1
 
+ 
+OM020 定义了在一个stack里的顺序，type2可以放在type1上方
 
-
-
-
-
-
-
-
-
+OM100 
 
 
 

@@ -5,6 +5,9 @@ demension尺寸
 lot management批量操作
 batch or quant批次或者数量
 receipt and issue接受和发放
+Occupation manage占用管理
+pallet rack托盘式货架
+Stack 货物堆积
 
 maintenance维护保养
 condensed and centralized浓缩和集中
