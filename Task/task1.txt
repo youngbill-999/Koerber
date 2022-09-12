@@ -1,0 +1,25 @@
+关于WMS_INVENTORY
+1.IM （Inventory Management）
+WMS_INVENTORY下IM_QUANTUM表里有20个属性，通过WMS_BASE组件将这些属性来与前端建立联系（ configuration possibility下面说明）
+INVENTORY需要检查前端传来的input（GREQU或者CHAQA-创建或更新quantum）
+
+WEB Service
+inventory/transaction	crelu	WebService endpoint for CRELU - Creation of a load unit
+
+API
+InventoryLoadUnitIdRangeJob	isTypLuCoded	checks if a LU type is coded. If a sequence is given then its coded (false), else true
+
+Dialogues
+IM040	Range of LU numbers	IM_LOAD_UNIT_ID_RANGE	Administration dialog
+
+
+测试过程
+1.Web service call（详情见WebServiceCall）
+2.Verification of web service result and DB changes
+3.If applicable, include cascading changes to other entities via foreign keys
+4.Save the information for following test steps
+5.Verify the saved information, repeat steps 3 and 4 as needed
+6.Use the saved information for the next web service call to continue with the next process step
+
+
+InventoryLoadUnitIdRangeJob	isTypLuCoded	checks if a LU type is coded. If a sequence is given then its coded (false), else true

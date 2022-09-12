@@ -1,3 +1,9 @@
 如果要访问GR300，PRT015添加我的Terminal，然后需要在WC200（workcentre中找到缺少的lieferungsschein相关条目下添加我的terminal）
 node显示不出来是因为边上被隐藏了
 Component Overview一般是TT500
+contol shift h查找文件
+Control shift t查看类文件源码
+
+使用Junit运行CucumberIntegrationIT即可
+不需要其余的配置，直接加feature文档和glue代码即可，glue不需要其他的标注
+IT test运行的时候需要同时启动SERVER，所以如果已经有server在运行中的话，就会报错

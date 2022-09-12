@@ -8,6 +8,9 @@ receipt and issue接受和发放
 Occupation manage占用管理
 pallet rack托盘式货架
 Stack 货物堆积
+Serial Shipping Container Code (SSCC)
+
+BBD best before date
 
 maintenance维护保养
 condensed and centralized浓缩和集中
@@ -18,3 +21,4 @@ substitution替换替代
 thorough全面的彻底的
 withdraw撤销
 concerned可能的
+quantum量化

@@ -1,0 +1,106 @@
+
+@RestController
+public class BwmsInwmsXService {
+
+  @Autowired
+  private ServiceProxy   serviceProxy;
+  @Autowired
+  private InwmsXController controller;
+
+  @RequestMapping(path = InwmsXDesc.SERVICE + "/" + InwmsXDesc.SAMPLE_EP, method = RequestMethod.POST)
+  public ResponseEntity<ServiceOutput<SampleOutput>> service(@RequestBody ServiceInput<SampleInput> input, @RequestHeader HttpHeaders headers) {
+    ServiceOutput<SampleOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InwmsXDesc.SAMPLE_EP, InwmsXDesc.getIt());
+    return new ResponseEntity<ServiceOutput<SampleOutput>>(output, status);
+  }
+
+}
+
+一个service中包含了多个fanc
+对于该service，应有一个controler作为定义service中func的input和接口和实现
+
+所以每一个service中的方法都有自己的输入和输出方法
+
+该项目利用一个CoreController来实现了对所有ServiceController的复用
+
+ */
+public interface InwmsXController extends CoreController{
+  
+  public CoreOutput doSomething(SampleInput input);
+}
+
+
+@Component
+public class InwmsXControllerImpl implements InwmsXController {
+
+  /**
+   * Default constructor.
+   */
+  public InwmsXControllerImpl() {
+  }
+
+  /**
+   * Core of a controller, entry point for logical implementation. Sample with definition of return value.
+   */
+  @Override
+  public CoreOutput executeService(String function, CoreInput input) {
+    switch (function) {
+    case InwmsXDesc.SAMPLE_EP:
+      if (!(input instanceof SampleInput)) {
+        String service = InwmsXDesc.getIt().getService();
+        throw new BendException(BendCoreTextCodes.BEND_0003, service, InwmsXDesc.SAMPLE_EP, input.getClass().getName());
+      }
+      return doSomething((SampleInput) input);
+    default:
+      String service = InwmsXDesc.getIt().getService();
+      throw new BendException(BendCoreTextCodes.BEND_0004, function, service);
+    }
+  }
+
+  @Override
+  public SampleOutput doSomething(SampleInput input) {
+    // Implementation of logic
+    return new SampleOutput();
+  }
+
+}
+
+
+
+Service的构建过程
+1.Write an input class
+作用：传递用户请求的信息：比如点击一个按钮，出发一次数据库的访问
+2.Write an output class
+作用：传递数据到前端
+3. Describe the webservice in the description class
+defines which endpoints and services in Webservice.
+and maps the different Webservices to Input and Output classes.
+在ServiceDesc中
+4.COntroller interface and impl
+5.写webservice
+@RestController来标注
+@Autoweird ServicePoxy
+@Autoweird 前面对应的controller（接口）
+
+关于方法
+ @RequestMapping(path = <group name> + "/" + <service name>, method = RequestMethod.POST)
+signature: public ResponseEntity<ServiceOutput<CoreOutput>> exampleMethodName(@RequestBody ServiceInput<ExampleInputClass> input)
+calling the callService method from the ServiceProxy
+
+
+Call a webservice
+
+public void setButSynchronize(IUnitOfWork uow, Vector<CgTab> selVec) {
+  CodegenSyncTabInput input = new CodegenSyncTabInput();
+  input.setEleList(new ArrayList<CodegenSyncElement>());
+  CodegenSyncElement ele;
+  String component = uow.getComponentName();
+  input.setComponent(component);
+  for (CgTab sel : selVec) {
+    ele = new CodegenSyncElement();
+    ele.setKnzGenRel(getKnzGenRel());
+    ele.setTableName(sel.getTableName());
+    input.getEleList().add(ele);
+  }
+  CallService.getIt().callService(input, CodegenDesc.CODEGEN_SYNC_TAB_ENTRY, CodegenDesc.getIt()); // <--- This is the actual call
+}
