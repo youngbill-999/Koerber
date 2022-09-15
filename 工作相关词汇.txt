@@ -10,6 +10,7 @@ pallet rack托盘式货架
 Stack 货物堆积
 Serial Shipping Container Code (SSCC)
 cartons纸箱
+replenishment补充补给
 
 BBD best before date
 
@@ -24,3 +25,4 @@ withdraw撤销
 concerned可能的
 quantum量化
 in turn 反过来
+bulk大量

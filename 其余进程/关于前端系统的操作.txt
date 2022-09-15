@@ -98,11 +98,23 @@ LU可以装在另外的LU中或者上，这样的嵌套称为stack
 1个装有纸箱和L型箱的托盘，内装甜品（3层）
 
 4.Movement
+LU 和 quants发生了改变的话，则一个movenmet或者transaction产生
+
+Booking Type
+CRELU：
+至少要指定LU TYPE， 位置源和目标
+根据LU Nummber的范围可以得知LU id可以或者必须指定，
+在第二种情况下，要检查LU Number input是否在范围之内
 
 
+Printing
+1.type of print out
+Labels, Reports
 
+2.Config of printer and doc
+PRT010 Printer types
+介绍了不同种类的printer，每一种printer负责打印不一样的内容
 
-
-
-
+PRT011 printer
+存储现有打印设备的信息，包括地址，种类
   
