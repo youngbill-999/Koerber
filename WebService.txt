@@ -104,3 +104,89 @@ public void setButSynchronize(IUnitOfWork uow, Vector<CgTab> selVec) {
   }
   CallService.getIt().callService(input, CodegenDesc.CODEGEN_SYNC_TAB_ENTRY, CodegenDesc.getIt()); // <--- This is the actual call
 }
+
+
+
+概念梳理
+WS是一个一次RESTcall Service with JSON as transferred data
+
+
+service construction:
+1.一个XXXService包含多个func
+2.该Service的Controller，包含一个interface和一个implementation
+3.Controller中包含了所有的service方法 
+MyExampleOutputN exampleN(MyExampleInputN input)-每一个service的func都有他们自己的Output和Input clases
+4.此外服务的入口点是“/family/fundc”---这里就类似于task1中的inventory/isLuCoded
+这个信息一般在familyDesc中定义、、、、
+比如：
+public class InventoryDesc extends ServiceDesc {
+
+ 
+  public static final String         CHECK_LU_CODED_EP    = "isLuCoded";
+ 
+
+  private static final InventoryDesc SINGLETON            = new InventoryDesc();
+
+  private InventoryDesc() {
+    super(SERVICE);
+    putEle(CHECK_LU_CODED_EP, InventoryLuCodedInput.class, InventoryLuCodedOutput.class);
+    --这里存储的是不同webservice对应的input和output
+    /*
+    protected void putEle(String key, Class<?> inputClass, Class<?> outputClass) {
+    this.eleMap.put(key, new ServiceDescEle(inputClass, outputClass));
+     }
+    */
+    
+  }
+
+  public static InventoryDesc getIt() {
+    return SINGLETON;
+  }
+
+此外还有一些service helper用于处理有关实现或者异常处理的任务
+
+相关API包的内容：
+一个该component的desc和若干对input和output classes
+
+
+实施框架
+ServiceDesc - a basic for the service descriptions
+CoreInput/CoreOutput - a basic for the service-input and output
+ServiceInput/Output（这二者都是继承至上一栏） - the container for CoreInput/Output, which contains in addition the general stuff (user, secret, times, language, context, error-stuff)
+EmptyInput/Output - for services with no input or void-output
+
+
+设计一个webservice的步骤
+1.写好input和output classes
+2.编写desc class或者在现有的desc中注册input和output
+3.写好controller interface
+funcoutput FunN(funInput input)
+4.controller impl implement controllerInterface
+例子在InventoryControllerImpl
+public CoreOutput executeService(String function(service名比如InventoryDESC下的isluCoded), CoreInput input) 
+switch (function) {
+   case CodegenDesc.Desc中定义的不同service的代码:
+     if (!(input instanceof CodegenSyncTabInput)) {
+       String service = CodegenDesc.getIt().getService();
+       String[] stringAr = { service, CodegenDesc.CODEGEN_SYNC_TAB_ENTRY, input.getClass().getName() };
+       throw new BendException("BEND-0003", stringAr);
+     }
+     return doSynchronizeWork((CodegenSyncTabInput) input);
+ 
+   default:
+     String service = CodegenDesc.getIt().getService();
+     String[] stringAr = { service, CodegenDesc.CODEGEN_SYNC_TAB_ENTRY, input.getClass().getName() };
+     throw new BendException("BEND-0003", stringAr);
+   }
+
+5.最上一层
+写好Service
+作用是将endpoint（前端）传来的请求map至相应的webservice中
+
+
+
+
+
+
+
+

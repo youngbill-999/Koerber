@@ -75,11 +75,29 @@ OM020 定义了在一个stack里的顺序，type2可以放在type1上方
 OM100 
 
 
+Stock Management
+1.quant
+定义： https://confluence.inconso.de/display/GN/Quant
+有区分和非区分的特征
 
 
 
+2.LU
+id是必要且唯一的
+id可以在系统内部进行输入，也可以通过外部信息检索
 
+quant是商品计数的基本单位
+lu是装载单位，lu可以装quant也可以装其他的lu
 
+3.LU stack
+LU可以装在另外的LU中或者上，这样的嵌套称为stack
+如果是LU stack必须标注，最多不能超过三层
+比如：
+1个装有甜点的托盘(1层) 
+1个装有纸箱的托盘，内装甜品（2层）
+1个装有纸箱和L型箱的托盘，内装甜品（3层）
+
+4.Movement
 
 
 

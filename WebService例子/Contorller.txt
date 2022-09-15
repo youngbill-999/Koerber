@@ -1,0 +1,128 @@
+package com.inconso.bend.inventory.logic;
+
+import com.inconso.bend.core.service.CoreController;
+import com.inconso.bend.core.service.api.CoreOutput;
+import com.inconso.bend.core.service.api.EmptyOutput;
+import com.inconso.bend.inventory.service.api.InventoryGenerateLuSeqInput;
+import com.inconso.bend.inventory.service.api.InventoryGenerateLuSeqOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuClosedInput;
+import com.inconso.bend.inventory.service.api.InventoryLuClosedOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuCodedInput;
+import com.inconso.bend.inventory.service.api.InventoryLuCodedOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuInput;
+import com.inconso.bend.inventory.service.api.InventoryPrintImArtLblInput;
+import com.inconso.bend.inventory.service.api.InventoryPrintLblInput;
+import com.inconso.bend.inventory.service.api.InventorySearchAndTransactionInput;
+import com.inconso.bend.inventory.service.api.InventorySearchAndTransactionOutput;
+import com.inconso.bend.inventory.service.api.InventorySearchInput;
+import com.inconso.bend.inventory.service.api.InventorySearchLuInput;
+import com.inconso.bend.inventory.service.api.InventorySearchOutput;
+
+/**
+ * InventoryController as entry point of the logic of a Web Service.
+ * 
+ * @author tkaelbel
+ *
+ */
+public interface InventoryController extends CoreController {
+
+  /**
+   * Entry point to check loading unit coded via webservice call.
+   * 
+   * @param input
+   *          {@link InventoryLuCodedInput}
+   * @return {@link InventoryLuCodedOutput}
+   */
+  public InventoryLuCodedOutput checkLuCoded(InventoryLuCodedInput input);
+
+  /**
+   * Entry point to generate id lu sequence via webservice call.
+   * 
+   * @param input
+   *          {@link InventoryGenerateLuSeqInput}
+   * @return {@link InventoryGenerateLuSeqOutput}
+   */
+  public InventoryGenerateLuSeqOutput generateLuSeq(InventoryGenerateLuSeqInput input);
+
+  /**
+   * Print the article label of the quantum
+   * 
+   * @param input
+   *          idSite idQuantum
+   * @return nothing
+   */
+  public CoreOutput printImArtLbl(InventoryPrintImArtLblInput input);
+
+  /**
+   * Print the label of the Lu
+   * 
+   * @param input
+   *          contain id load unit
+   * @return nothing
+   */
+  public CoreOutput inventoryPrintLuLblInput(InventoryPrintLblInput input);
+
+  /**
+   * Print the label for the pid
+   * 
+   * @param input
+   *          contain the id lu
+   * @return nothing
+   */
+
+  public CoreOutput inventoryPrintPidLblInput(InventoryPrintLblInput input);
+
+  /**
+   * Entry point to check loading unit closed via webservice call.
+   * 
+   * @param input
+   *          {@link InventoryLuCodedInput}
+   * @return {@link InventoryLuCodedOutput}
+   */
+  public InventoryLuClosedOutput checkLuClosed(InventoryLuClosedInput input);
+
+  /**
+   * Entry point to check loading unit not used in open process records via webservice call.
+   * 
+   * @param input
+   *          {@link InventoryLuInput}
+   * @return {@link EmptyOutput}
+   */
+  public EmptyOutput checkLuNotUsedInOpenProcess(InventoryLuInput input);
+
+  /**
+   * Entry point for searching a storage location via webservice call.
+   * 
+   * @param input
+   *          {@link InventorySearchInput}
+   * @return {@link InventorySearchOutput} and if the call is returning null, an empty one
+   */
+  public InventorySearchOutput searchLocation(InventorySearchInput input);
+
+  /**
+   * Entry point for searching a storage location by load unit via webservice call.
+   * 
+   * @param input
+   *          {@link InventorySearchLuInput}
+   * @return {@link InventorySearchOutput} and if the call is returning null, an empty one
+   */
+  public InventorySearchOutput searchLocationLu(InventorySearchLuInput input);
+
+  /**
+   * Search Location for load unit and do rellu.
+   * 
+   * @param input
+   *          {@link InventorySearchAndTransactionInput}
+   * @return {@link InventorySearchAndTransactionOutput} and if the call is returning null, an empty one
+   */
+  public InventorySearchAndTransactionOutput searchLocLuAndRellu(InventorySearchAndTransactionInput input);
+
+  /**
+   * Search Location for quantum and do botra.
+   * 
+   * @param input
+   *          {@link InventorySearchAndTransactionInput}
+   * @return {@link InventorySearchAndTransactionOutput} and if the call is returning null, an empty one
+   */
+  public InventorySearchAndTransactionOutput searchLocQtAndBotra(InventorySearchAndTransactionInput input);
+}

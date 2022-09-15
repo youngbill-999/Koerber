@@ -1,0 +1,231 @@
+package com.inconso.bend.inventory.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.inconso.bend.core.service.ServiceProxy;
+import com.inconso.bend.core.service.api.EmptyOutput;
+import com.inconso.bend.core.service.api.ServiceInput;
+import com.inconso.bend.core.service.api.ServiceOutput;
+import com.inconso.bend.inventory.logic.InventoryController;
+import com.inconso.bend.inventory.pers.model.ImLoadUnit;
+import com.inconso.bend.inventory.pers.model.ImQuantum;
+import com.inconso.bend.inventory.service.api.InventoryDesc;
+import com.inconso.bend.inventory.service.api.InventoryGenerateLuSeqInput;
+import com.inconso.bend.inventory.service.api.InventoryGenerateLuSeqOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuClosedInput;
+import com.inconso.bend.inventory.service.api.InventoryLuClosedOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuCodedInput;
+import com.inconso.bend.inventory.service.api.InventoryLuCodedOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuInput;
+import com.inconso.bend.inventory.service.api.InventoryPrintImArtLblInput;
+import com.inconso.bend.inventory.service.api.InventoryPrintLblInput;
+import com.inconso.bend.inventory.service.api.InventorySearchAndTransactionInput;
+import com.inconso.bend.inventory.service.api.InventorySearchAndTransactionOutput;
+import com.inconso.bend.inventory.service.api.InventorySearchInput;
+import com.inconso.bend.inventory.service.api.InventorySearchLuInput;
+import com.inconso.bend.inventory.service.api.InventorySearchOutput;
+
+@RestController
+@RequestMapping(InventoryDesc.SERVICE + "/")
+public class InventoryService {
+
+  @Autowired
+  private ServiceProxy        serviceProxy;
+  @Autowired
+  private InventoryController controller;
+
+  /**
+   * Service endpoint to check if a lu is coded.
+   * 
+   * @param input
+   *          {@link InventoryLuCodedInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventoryLuCodedOutput}
+   */
+  @PostMapping(InventoryDesc.CHECK_LU_CODED_EP)
+  public ResponseEntity<ServiceOutput<InventoryLuCodedOutput>> isLuCoded(@RequestBody ServiceInput<InventoryLuCodedInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventoryLuCodedOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.CHECK_LU_CODED_EP, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to generate a sequence for a id lu.
+   * 
+   * @param input
+   *          {@link InventoryGenerateLuSeqInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventoryGenerateLuSeqOutput}
+   */
+  @PostMapping(InventoryDesc.GENERATE_ID_LU_SEQ)
+  public ResponseEntity<ServiceOutput<InventoryGenerateLuSeqOutput>> generateIdLuSeq(@RequestBody ServiceInput<InventoryGenerateLuSeqInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventoryGenerateLuSeqOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.GENERATE_ID_LU_SEQ, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Print article label for {@link ImQuantum}
+   * 
+   * @param input
+   *          input
+   * @param headers
+   *          headers
+   * @return {@link EmptyOutput}
+   */
+  @PostMapping(InventoryDesc.PRINT_IM_ART_LBL)
+  public ResponseEntity<ServiceOutput<EmptyOutput>> printImArtLbl(@RequestBody ServiceInput<InventoryPrintImArtLblInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<EmptyOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.PRINT_IM_ART_LBL, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Print label for {@link ImLoadUnit}
+   * 
+   * @param input
+   *          input
+   * @param headers
+   *          headers
+   * @return {@link EmptyOutput}
+   */
+  @PostMapping(InventoryDesc.PRINT_LU_LBL)
+  public ResponseEntity<ServiceOutput<EmptyOutput>> printLuLbl(@RequestBody ServiceInput<InventoryPrintLblInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<EmptyOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.PRINT_LU_LBL, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Print label for {@link ImLoadUnit}
+   * 
+   * @param input
+   *          input
+   * @param headers
+   *          headers
+   * @return {@link EmptyOutput}
+   */
+  @PostMapping(InventoryDesc.PRINT_PID_LBL)
+  public ResponseEntity<ServiceOutput<EmptyOutput>> printPidLbl(@RequestBody ServiceInput<InventoryPrintLblInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<EmptyOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.PRINT_PID_LBL, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to check if a lu is closed.
+   * 
+   * @param input
+   *          {@link InventoryLuClosedInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventoryLuClosedOutput}
+   */
+  @PostMapping(InventoryDesc.CHECK_LU_CLOSED_EP)
+  public ResponseEntity<ServiceOutput<InventoryLuClosedOutput>> isLuClosed(@RequestBody ServiceInput<InventoryLuClosedInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventoryLuClosedOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.CHECK_LU_CLOSED_EP, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to check if a lu is not used in open process records
+   * 
+   * @param input
+   *          {@link InventoryLuInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link EmptyOutput}
+   */
+  @PostMapping(InventoryDesc.CHECK_LU_NOT_USED_EP)
+  public ResponseEntity<ServiceOutput<EmptyOutput>> notUsedInOpenProcesses(@RequestBody ServiceInput<InventoryLuInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<EmptyOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.CHECK_LU_NOT_USED_EP, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to search for a storage location.
+   * 
+   * @param input
+   *          {@link InventorySearchInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventorySearchOutput}
+   */
+  @PostMapping(InventoryDesc.SEARCH_LOC_EP)
+  public ResponseEntity<ServiceOutput<InventorySearchOutput>> searchLoc(@RequestBody ServiceInput<InventorySearchInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventorySearchOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.SEARCH_LOC_EP, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to search for a storage location by a load unit.
+   * 
+   * @param input
+   *          {@link InventorySearchInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventorySearchOutput}
+   */
+  @PostMapping(InventoryDesc.SEARCH_LOC_LU_EP)
+  public ResponseEntity<ServiceOutput<InventorySearchOutput>> searchLocLu(@RequestBody ServiceInput<InventorySearchLuInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventorySearchOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.SEARCH_LOC_LU_EP, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to search for a storage location by a load unit.
+   * 
+   * @param input
+   *          {@link InventorySearchAndTransactionInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventorySearchAndTransactionOutput}
+   */
+  @PostMapping(InventoryDesc.SEARCH_LOC_QT_BOTRA)
+  public ResponseEntity<ServiceOutput<InventorySearchAndTransactionOutput>> searchLocQtBotra(
+      @RequestBody ServiceInput<InventorySearchAndTransactionInput> input, @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventorySearchAndTransactionOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.SEARCH_LOC_QT_BOTRA, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+  /**
+   * Service endpoint to search for a storage location by a load unit.
+   * 
+   * @param input
+   *          {@link InventorySearchInput}
+   * @param headers
+   *          {@link HttpHeaders}
+   * @return {@link InventorySearchAndTransactionOutput}
+   */
+  @PostMapping(InventoryDesc.SEARCH_LOC_LU_RELLU)
+  public ResponseEntity<ServiceOutput<InventorySearchAndTransactionOutput>> searchLocLuRellu(
+      @RequestBody ServiceInput<InventorySearchAndTransactionInput> input, @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventorySearchAndTransactionOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.SEARCH_LOC_LU_RELLU, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+}

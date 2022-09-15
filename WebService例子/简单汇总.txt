@@ -1,0 +1,50 @@
+Service：
+@PostMapping(InventoryDesc.CHECK_LU_CODED_EP)
+  public ResponseEntity<ServiceOutput<InventoryLuCodedOutput>> isLuCoded(@RequestBody ServiceInput<InventoryLuCodedInput> input,
+      @RequestHeader HttpHeaders headers) {
+    ServiceOutput<InventoryLuCodedOutput> output = new ServiceOutput<>();
+    HttpStatus status = serviceProxy.callService(input, output, headers, controller, InventoryDesc.CHECK_LU_CODED_EP, InventoryDesc.getIt());
+    return new ResponseEntity<>(output, status);
+  }
+
+Controller:
+public InventoryLuCodedOutput checkLuCoded(InventoryLuCodedInput input);
+
+ControllerImpl:
+
+@Override
+  public CoreOutput executeService(String function, CoreInput input) {
+    String service = InventoryDesc.getIt().getService();//最终得到的是“inventory”,这个参数在desc中有定义
+    switch (function) {
+    case InventoryDesc.CHECK_LU_CODED_EP:
+      return callServiceFunction(function, service, input, InventoryLuCodedInput.class, this::checkLuCoded);
+                               //(isLucoded,inventory,前面dservice传来的input，这里需要match的input，下面定义的output)
+    default:
+      throw new BendException(BendCoreTextCodes.BEND_0004, function, service);
+    }
+  }
+
+@Override
+  public InventoryLuCodedOutput checkLuCoded(InventoryLuCodedInput input) {
+    Assert.notNull(input, INPUT_NOT_NULL);
+    Assert.notNull(input.getIdSite(), INPUT_ID_SITE_NOT_NULL);
+    Assert.notNull(input.getTypLu(), "input.typLu should not be null");
+
+    InventoryLuCodedOutput output = new InventoryLuCodedOutput();
+    output.setIsLuCoded(inventoryLoadUnitIdRangeJob.isTypLuCoded(input.getIdSite(), input.getTypLu()));
+    return output;
+  }
+
+Desc:
+ public static final String         SERVICE              = "inventory";
+  public static final String         CHECK_LU_CODED_EP    = "isLuCoded";
+ 
+  private static final InventoryDesc SINGLETON            = new InventoryDesc();
+
+  private InventoryDesc() {
+    super(SERVICE);
+    putEle(CHECK_LU_CODED_EP, InventoryLuCodedInput.class, InventoryLuCodedOutput.class);
+   
+  }
+
+

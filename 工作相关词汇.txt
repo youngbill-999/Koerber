@@ -9,6 +9,7 @@ Occupation manage占用管理
 pallet rack托盘式货架
 Stack 货物堆积
 Serial Shipping Container Code (SSCC)
+cartons纸箱
 
 BBD best before date
 
@@ -22,3 +23,4 @@ thorough全面的彻底的
 withdraw撤销
 concerned可能的
 quantum量化
+in turn 反过来

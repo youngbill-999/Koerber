@@ -7,3 +7,10 @@ Control shift t查看类文件源码
 使用Junit运行CucumberIntegrationIT即可
 不需要其余的配置，直接加feature文档和glue代码即可，glue不需要其他的标注
 IT test运行的时候需要同时启动SERVER，所以如果已经有server在运行中的话，就会报错
+
+关于涉及到数据库事务处理的行为时
+webservice 定义在不同的包中
+比如：
+inventoryTransactionDesc
+其中的input类相对来说复杂，需要有builder
+controller也在imTransactionController中

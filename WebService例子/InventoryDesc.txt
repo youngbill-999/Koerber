@@ -1,0 +1,51 @@
+package com.inconso.bend.inventory.service.api;
+
+import com.inconso.bend.core.service.api.EmptyOutput;
+import com.inconso.bend.core.service.api.ServiceDesc;
+
+/**
+ * The endpoint description of the Sample-Service
+ * 
+ * @author dhochstrasser
+ *
+ */
+public class InventoryDesc extends ServiceDesc {
+
+  public static final String         SERVICE              = "inventory";
+  public static final String         SAMPLE_EP            = "test";
+  public static final String         TRANS_CRELU_EP       = "trans_crelu";
+  public static final String         CHECK_LU_CODED_EP    = "isLuCoded";
+  public static final String         SEARCH_LOC_EP        = "searchLoc";
+  public static final String         SEARCH_LOC_LU_EP     = "searchLocLu";
+  public static final String         SEARCH_LOC_QT_BOTRA  = "searchLocQtBotra";
+  public static final String         SEARCH_LOC_LU_RELLU  = "searchLocLuBotra";
+  public static final String         GENERATE_ID_LU_SEQ   = "generateIdLuSeq";
+  public static final String         PRINT_IM_ART_LBL     = "printImArtLbl";
+  public static final String         PRINT_LU_LBL         = "printLuLbl";
+  public static final String         PRINT_PID_LBL        = "printPidLbl";
+  public static final String         CHECK_LU_CLOSED_EP   = "isLuClosed";
+  public static final String         CHECK_LU_NOT_USED_EP = "notUsedInOpenProcesses";
+
+  private static final InventoryDesc SINGLETON            = new InventoryDesc();
+
+  private InventoryDesc() {
+    super(SERVICE);
+    putEle(CHECK_LU_CODED_EP, InventoryLuCodedInput.class, InventoryLuCodedOutput.class);
+    putEle(GENERATE_ID_LU_SEQ, InventoryGenerateLuSeqInput.class, InventoryGenerateLuSeqOutput.class);
+    putEle(PRINT_IM_ART_LBL, InventoryPrintImArtLblInput.class, EmptyOutput.class);
+    putEle(PRINT_LU_LBL, InventoryPrintLblInput.class, EmptyOutput.class);
+    putEle(PRINT_PID_LBL, InventoryPrintLblInput.class, EmptyOutput.class);
+    putEle(CHECK_LU_CLOSED_EP, InventoryLuClosedInput.class, InventoryLuClosedOutput.class);
+    putEle(CHECK_LU_NOT_USED_EP, InventoryLuInput.class, EmptyOutput.class);
+    putEle(SEARCH_LOC_EP, InventorySearchInput.class, InventorySearchOutput.class);
+    putEle(SEARCH_LOC_LU_EP, InventorySearchLuInput.class, InventorySearchOutput.class);
+    putEle(SEARCH_LOC_QT_BOTRA, InventorySearchAndTransactionInput.class, InventorySearchAndTransactionOutput.class);
+    putEle(SEARCH_LOC_LU_RELLU, InventorySearchAndTransactionInput.class, InventorySearchAndTransactionOutput.class);
+
+  }
+
+  public static InventoryDesc getIt() {
+    return SINGLETON;
+  }
+
+}

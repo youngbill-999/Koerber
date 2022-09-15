@@ -23,3 +23,6 @@ IM040	Range of LU numbers	IM_LOAD_UNIT_ID_RANGE	Administration dialog
 
 
 InventoryLoadUnitIdRangeJob	isTypLuCoded	checks if a LU type is coded. If a sequence is given then its coded (false), else true
+
+
+所有要使用的api都在bend.inventory.service.api中

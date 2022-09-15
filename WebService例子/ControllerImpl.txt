@@ -1,0 +1,294 @@
+package com.inconso.bend.inventory.logic;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import com.inconso.bend.core.code.CodeCache;
+import com.inconso.bend.core.config.BendCoreTextCodes;
+import com.inconso.bend.core.exception.BendException;
+import com.inconso.bend.core.logic.BendUserManager;
+import com.inconso.bend.core.service.ServiceGlobal;
+import com.inconso.bend.core.service.api.CoreInput;
+import com.inconso.bend.core.service.api.CoreOutput;
+import com.inconso.bend.core.service.api.EmptyOutput;
+import com.inconso.bend.inventory.config.BwmsInventoryTextCodes;
+import com.inconso.bend.inventory.config.ImPrtTypProcessCode;
+import com.inconso.bend.inventory.logic.transaction.ImTransactionController;
+import com.inconso.bend.inventory.logic.transaction.api.ImModluInput;
+import com.inconso.bend.inventory.logic.transaction.api.internal.ModluData;
+import com.inconso.bend.inventory.logic.transaction.lu.ImModluChecksJob;
+import com.inconso.bend.inventory.service.api.InventoryDesc;
+import com.inconso.bend.inventory.service.api.InventoryGenerateLuSeqInput;
+import com.inconso.bend.inventory.service.api.InventoryGenerateLuSeqOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuClosedInput;
+import com.inconso.bend.inventory.service.api.InventoryLuClosedOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuCodedInput;
+import com.inconso.bend.inventory.service.api.InventoryLuCodedOutput;
+import com.inconso.bend.inventory.service.api.InventoryLuInput;
+import com.inconso.bend.inventory.service.api.InventoryPrintImArtLblInput;
+import com.inconso.bend.inventory.service.api.InventoryPrintLblInput;
+import com.inconso.bend.inventory.service.api.InventorySearchAndTransactionInput;
+import com.inconso.bend.inventory.service.api.InventorySearchAndTransactionOutput;
+import com.inconso.bend.inventory.service.api.InventorySearchInput;
+import com.inconso.bend.inventory.service.api.InventorySearchLuInput;
+import com.inconso.bend.inventory.service.api.InventorySearchOutput;
+import com.inconso.bend.inventory.service.transaction.api.InventoryBotraInput;
+import com.inconso.bend.inventory.service.transaction.api.InventoryRelluInput;
+import com.inconso.bend.print.config.PrtClProcessCode;
+
+/**
+ * InventoryController as entry point of the logic of a Web Service.
+ * 
+ * @author tkaelbel
+ *
+ */
+@Component
+public class InventoryControllerImpl implements InventoryController {
+
+  private static final Logger               LOG                    = LoggerFactory.getLogger(InventoryController.class);
+  private static final String               INPUT_NOT_NULL         = "input should not be null";
+  private static final String               INPUT_ID_SITE_NOT_NULL = "input.idSite should not be null";
+  private static final String               INPUT                  = "input";
+  private static final String               ID_SITE                = "idSite";
+
+  private ServiceGlobal                     sg                     = ServiceGlobal.getIt();
+
+  private final InventoryLoadUnitIdRangeJob inventoryLoadUnitIdRangeJob;
+  private final ImInventoryPrintManager     imInventoryPrintManager;
+  private final ImInventorySearchManager    imInventorySearchManager;
+  private final ImModluChecksJob            imModluChecksJob;
+  private final ImTransactionController     imTransactionController;
+  private final CodeCache                   codeCache;
+
+  public InventoryControllerImpl(InventoryLoadUnitIdRangeJob inventoryLoadUnitIdRangeJob, ImInventoryPrintManager imInventoryPrintManager, // NOSONAR
+      ImInventorySearchManager imInventorySearchManager, ImModluChecksJob imModluChecksJob, ImTransactionController imTransactionController,
+      CodeCache codeCache) {
+    this.inventoryLoadUnitIdRangeJob = inventoryLoadUnitIdRangeJob;
+    this.imInventoryPrintManager = imInventoryPrintManager;
+    this.imInventorySearchManager = imInventorySearchManager;
+    this.imModluChecksJob = imModluChecksJob;
+    this.imTransactionController = imTransactionController;
+    this.codeCache = codeCache;
+  }
+
+  @Override
+  public CoreOutput executeService(String function, CoreInput input) {
+    String service = InventoryDesc.getIt().getService();
+    switch (function) {
+    case InventoryDesc.CHECK_LU_CODED_EP:
+      return callServiceFunction(function, service, input, InventoryLuCodedInput.class, this::checkLuCoded);
+    case InventoryDesc.GENERATE_ID_LU_SEQ:
+      return callServiceFunction(function, service, input, InventoryGenerateLuSeqInput.class, this::generateLuSeq);
+    case InventoryDesc.PRINT_IM_ART_LBL:
+      return callServiceFunction(function, service, input, InventoryPrintImArtLblInput.class, this::printImArtLbl);
+    case InventoryDesc.PRINT_LU_LBL:
+      return callServiceFunction(function, service, input, InventoryPrintLblInput.class, this::inventoryPrintLuLblInput);
+    case InventoryDesc.PRINT_PID_LBL:
+      return callServiceFunction(function, service, input, InventoryPrintLblInput.class, this::inventoryPrintPidLblInput);
+    case InventoryDesc.CHECK_LU_CLOSED_EP:
+      return callServiceFunction(function, service, input, InventoryLuClosedInput.class, this::checkLuClosed);
+    case InventoryDesc.CHECK_LU_NOT_USED_EP:
+      return callServiceFunction(function, service, input, InventoryLuInput.class, this::checkLuNotUsedInOpenProcess);
+    case InventoryDesc.SEARCH_LOC_EP:
+      return callServiceFunction(function, service, input, InventorySearchInput.class, this::searchLocation);
+    case InventoryDesc.SEARCH_LOC_LU_RELLU:
+      return callServiceFunction(function, service, input, InventorySearchAndTransactionInput.class, this::searchLocLuAndRellu);
+    case InventoryDesc.SEARCH_LOC_QT_BOTRA:
+      return callServiceFunction(function, service, input, InventorySearchAndTransactionInput.class, this::searchLocQtAndBotra);
+    case InventoryDesc.SEARCH_LOC_LU_EP:
+      return callServiceFunction(function, service, input, InventorySearchLuInput.class, this::searchLocationLu);
+    default:
+      throw new BendException(BendCoreTextCodes.BEND_0004, function, service);
+    }
+  }
+
+  @Override
+  public InventoryLuCodedOutput checkLuCoded(InventoryLuCodedInput input) {
+    Assert.notNull(input, INPUT_NOT_NULL);
+    Assert.notNull(input.getIdSite(), INPUT_ID_SITE_NOT_NULL);
+    Assert.notNull(input.getTypLu(), "input.typLu should not be null");
+
+    InventoryLuCodedOutput output = new InventoryLuCodedOutput();
+    output.setIsLuCoded(inventoryLoadUnitIdRangeJob.isTypLuCoded(input.getIdSite(), input.getTypLu()));
+    return output;
+  }
+
+  @Override
+  public InventoryGenerateLuSeqOutput generateLuSeq(InventoryGenerateLuSeqInput input) {
+    String idLu = inventoryLoadUnitIdRangeJob.getIdLu(BendUserManager.getManager().getContext("SITE"), input.getTypLu());
+
+    return new InventoryGenerateLuSeqOutput(idLu);
+  }
+
+  @Override
+  public CoreOutput printImArtLbl(InventoryPrintImArtLblInput input) {
+    ServiceGlobal.getIt().assertNotNull(INPUT, LOG, input);
+    ServiceGlobal.getIt().assertNotNull(ID_SITE, LOG, input.getIdSite());
+    ServiceGlobal.getIt().assertNotNull("idQuantum", LOG, input.getIdQuantum());
+    ServiceGlobal.getIt().assertNotNull("idTerminal", LOG, input.getIdTerminal());
+    imInventoryPrintManager.printImArtLbl(input.getIdSite(), input.getIdQuantum(), input.getIdTerminal());
+    return new EmptyOutput();
+  }
+
+  @Override
+  public CoreOutput inventoryPrintLuLblInput(InventoryPrintLblInput input) {
+    ServiceGlobal.getIt().assertNotNull(INPUT, LOG, input);
+    ServiceGlobal.getIt().assertNotNull(ID_SITE, LOG, input.getIdSite());
+    ServiceGlobal.getIt().assertNotNull("idLu", LOG, input.getIdLu());
+    imInventoryPrintManager.printImLbl(BendUserManager.getManager().getContext("SITE"), input.getIdLu(), input.getIdTerminal(),
+        codeCache.getValue(PrtClProcessCode.DIALOG), codeCache.getValue(ImPrtTypProcessCode.IM_LU_LBL), input.getTypLU());
+    return new EmptyOutput();
+  }
+
+  @Override
+  public CoreOutput inventoryPrintPidLblInput(InventoryPrintLblInput input) {
+    ServiceGlobal.getIt().assertNotNull(INPUT, LOG, input);
+    ServiceGlobal.getIt().assertNotNull(ID_SITE, LOG, input.getIdSite());
+    ServiceGlobal.getIt().assertNotNull("idLu", LOG, input.getIdLu());
+    imInventoryPrintManager.printImLbl(BendUserManager.getManager().getContext("SITE"), input.getIdLu(), input.getIdTerminal(),
+        codeCache.getValue(PrtClProcessCode.DIALOG), codeCache.getValue(ImPrtTypProcessCode.IM_PID_LBL), input.getTypLU());
+    return new EmptyOutput();
+  }
+
+  @Override
+  public InventoryLuClosedOutput checkLuClosed(InventoryLuClosedInput input) {
+    Assert.notNull(input, INPUT_NOT_NULL);
+    Assert.notNull(input.getIdSite(), INPUT_ID_SITE_NOT_NULL);
+    Assert.notNull(input.getTypLu(), "input.typLu should not be null");
+
+    InventoryLuClosedOutput output = new InventoryLuClosedOutput();
+    output.setIsLuClosed(inventoryLoadUnitIdRangeJob.isTypLuClosed(input.getIdSite(), input.getTypLu()));
+    return output;
+  }
+
+  @Override
+  public EmptyOutput checkLuNotUsedInOpenProcess(InventoryLuInput input) {
+    Assert.notNull(input, INPUT_NOT_NULL);
+    Assert.notNull(input.getIdSite(), INPUT_ID_SITE_NOT_NULL);
+    Assert.notNull(input.getIdLu(), "input.idLu should not be null");
+
+    // user exit, check whether there are no open processes for the load unit
+    ImModluInput inputData = new ImModluInput();
+    inputData.setIdSite(input.getIdSite());
+    inputData.setIdLu(input.getIdLu());
+    ModluData data = new ModluData(inputData, null);
+    imModluChecksJob.assertLuNotUsedInOpenProcesses(data);
+    return new EmptyOutput();
+  }
+
+  @Override
+  public InventorySearchOutput searchLocation(InventorySearchInput input) {
+    try {
+      InventorySearchOutput output = imInventorySearchManager.searchLocation(input);
+      if (output != null) {
+        return output;
+      }
+      return new InventorySearchOutput();
+    } catch (BendException | IllegalArgumentException e) {
+      searchLocationHandleException(input.isCatchException(), e);
+      return new InventorySearchOutput();
+    }
+  }
+
+  @Override
+  public InventorySearchOutput searchLocationLu(InventorySearchLuInput input) {
+    try {
+      InventorySearchOutput output = imInventorySearchManager.searchLocationLu(input);
+      if (output != null) {
+        return output;
+      }
+      return new InventorySearchOutput();
+    } catch (BendException | IllegalArgumentException e) {
+      searchLocationHandleException(input.isCatchException(), e);
+      return new InventorySearchOutput();
+    }
+  }
+
+  @Override
+  public InventorySearchAndTransactionOutput searchLocLuAndRellu(InventorySearchAndTransactionInput input) {
+    sg.assertNotNull(INPUT, input);
+    InventorySearchLuInput searchLuInput = input.getInventorySearchLuInput();
+    InventoryRelluInput relluInput = input.getInventoryRelluInput();
+    sg.assertNotNull("relluInput", relluInput);
+
+    InventorySearchOutput searchLocOutput = null;
+    InventorySearchAndTransactionOutput output = new InventorySearchAndTransactionOutput();
+
+    if (relluInput.getStorageAreaTgt() == null || relluInput.getStorageLocationTgt() == null) {
+      if (searchLuInput.getIdNode() == null) {
+        throw new BendException(BwmsInventoryTextCodes.IM_0823);
+      }
+      searchLocOutput = searchLocationLu(searchLuInput);
+      if (searchLocOutput != null && searchLocOutput.getStorageArea() != null && searchLocOutput.getStorageLocation() != null) {
+        relluInput.setStorageAreaTgt(searchLocOutput.getStorageArea());
+        relluInput.setStorageLocationTgt(searchLocOutput.getStorageLocation());
+        output.setStorageArea(searchLocOutput.getStorageArea());
+        output.setStorageLocation(searchLocOutput.getStorageLocation());
+      } else {
+        throw new BendException(BwmsInventoryTextCodes.IM_0824);
+      }
+    } else {
+      output.setStorageArea(relluInput.getStorageAreaTgt());
+      output.setStorageLocation(relluInput.getStorageLocationTgt());
+    }
+    // FIXME: gehoert hier nicht hin...den Check gibt es schon in
+    // com.inconso.bend.inventory.logic.validator.ImStorageAreaChecksJob.isWithEmptyLuMgmt(String, String)!!!
+    inventoryLoadUnitIdRangeJob.checkAreaWithFlgEmptyLuMgmt(relluInput.getIdSite(), output.getStorageArea(), relluInput.getIdLu());
+    imTransactionController.doRelluTransaction(relluInput);
+    return output;
+
+  }
+
+  @Override
+  public InventorySearchAndTransactionOutput searchLocQtAndBotra(InventorySearchAndTransactionInput input) {
+    sg.assertNotNull(INPUT, input);
+    InventorySearchInput searchInput = input.getInventorySearchInput();
+    InventoryBotraInput botraInput = input.getInventoryBotraInput();
+    sg.assertNotNull("searchInput", searchInput);
+    sg.assertNotNull("botraInput", botraInput);
+    InventorySearchOutput searchLocOutput = null;
+    InventorySearchAndTransactionOutput output = new InventorySearchAndTransactionOutput();
+
+    if ((botraInput.getStorageAreaTgt() == null || botraInput.getStorageLocationTgt() == null) && botraInput.getIdLuTgt() == null) {
+      if (searchInput.getIdNode() == null) {
+        throw new BendException(BwmsInventoryTextCodes.IM_0823);
+      }
+      searchLocOutput = searchLocation(searchInput);
+      if (searchLocOutput != null && searchLocOutput.getStorageArea() != null && searchLocOutput.getStorageLocation() != null) {
+        botraInput.setStorageAreaTgt(searchLocOutput.getStorageArea());
+        botraInput.setStorageLocationTgt(searchLocOutput.getStorageLocation());
+        output.setStorageArea(searchLocOutput.getStorageArea());
+        output.setStorageLocation(searchLocOutput.getStorageLocation());
+
+      } else {
+        throw new BendException(BwmsInventoryTextCodes.IM_0824);
+      }
+    } else {
+      output.setStorageArea(botraInput.getStorageAreaTgt());
+      output.setStorageLocation(botraInput.getStorageLocationTgt());
+    }
+
+    imTransactionController.doBotraTransaction(botraInput);
+    return output;
+
+  }
+
+  /**
+   * If an Exception should be caught instead of thrown during a location search, this method will handle it accordingly. Otherwise the given
+   * excepiton will be thrown.
+   * 
+   * @param isCatchException
+   *          true catch the exception and return, false throw the exception
+   * @param e
+   *          the exception to be caught or thrown
+   */
+  private void searchLocationHandleException(boolean isCatchException, RuntimeException e) {
+    if (isCatchException) {
+      LOG.warn("Exception {} caught.", e.getMessage());
+    } else {
+      throw e;
+    }
+  }
+
+}
