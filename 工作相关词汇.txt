@@ -11,6 +11,7 @@ Stack 货物堆积
 Serial Shipping Container Code (SSCC)
 cartons纸箱
 replenishment补充补给
+Carrier载体载具
 
 BBD best before date
 
@@ -26,3 +27,5 @@ concerned可能的
 quantum量化
 in turn 反过来
 bulk大量
+preliminary预审的
+accumulate积累

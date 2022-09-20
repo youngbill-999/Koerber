@@ -1,5 +1,7 @@
 eclipse服务器连接用户名basis，无密码
 数据库连接
+default
+law, 0E3394236B11E729F73587AC03D3EC44
 
 前端yub
 221222
