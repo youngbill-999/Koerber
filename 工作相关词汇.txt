@@ -12,6 +12,8 @@ Serial Shipping Container Code (SSCC)
 cartons纸箱
 replenishment补充补给
 Carrier载体载具
+Value Added Services(VAS)
+
 
 BBD best before date
 
@@ -29,3 +31,4 @@ in turn 反过来
 bulk大量
 preliminary预审的
 accumulate积累
+from scratch从头

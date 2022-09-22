@@ -14,3 +14,24 @@ webservice 定义在不同的包中
 inventoryTransactionDesc
 其中的input类相对来说复杂，需要有builder
 controller也在imTransactionController中
+
+Java generics泛型
+泛型标记符号
+E - Element (在集合中使用，因为集合中存放的是元素)
+T - Type（Java 类）
+K - Key（键）
+V - Value（值）
+N - Number（数值类型）
+？ - 表示不确定的 java 类型
+
+Java assert断言
+在测试项目中，所用到的测试断言一般不是正统的java断言，而是junit中的断言
+而在实操中，assertAll中会用到lambda表达式同时实现多个断言
+原因：如过单独实现，当第一个出了问题，后边的数据就没有机会打印出来。
+
+
+Lambda表达式
+本质是函数
+格式：（参数列表）—>{方法体}
+
+BEND error code的定义在BendCoreTextCodes中
