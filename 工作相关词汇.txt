@@ -13,6 +13,11 @@ cartons纸箱
 replenishment补充补给
 Carrier载体载具
 Value Added Services(VAS)
+ASNs (advance shipping notifications) 预先发货通知
+Staging areas
+staging area货物中转区
+high bay warehouse 高架仓库
+overstock积压
 
 
 BBD best before date
@@ -32,3 +37,4 @@ bulk大量
 preliminary预审的
 accumulate积累
 from scratch从头
+replenishment补充补给
