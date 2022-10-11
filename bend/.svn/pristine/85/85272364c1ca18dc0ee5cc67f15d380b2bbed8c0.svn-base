@@ -1,0 +1,255 @@
+//
+// Jenkinsfile to build and test a BEND Project.
+//
+//
+// The Java JDK Version to use
+jdk_version   = 'OpenJDK-17'
+// The Maven Version to use
+maven_version = 'Maven-3'
+
+pipeline {
+
+    // Run anywhere
+    agent any
+
+    // Run every 15 Minutes and be triggered by built snapshot dependencies
+    triggers {
+        pollSCM 'H/15 * * * *'
+        snapshotDependencies()
+    }
+
+    // Limit the artifacts to keep and how often the build can be triggered
+    options {
+        disableConcurrentBuilds()
+        rateLimitBuilds(
+            throttle: [count: 4, durationName: 'hour', userBoost: true]
+        )
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '15')
+    }
+
+    parameters {
+        // If pit tests should be executed
+        booleanParam(
+            name: 'withPitest', 
+            description: 'If true, pitest coverage will be executed',
+            defaultValue: params.withPitest !=null ? params.withPitest : true
+        )
+    }
+
+    stages{
+        stage('checkout'){
+            steps{
+                // get scm location from job configuration...:
+                // echo scm.locations[0].remote
+
+                // needed: "ignoreExternalsOption: false" -> "remote" is mandatory...see line before how to get the URL from job
+                checkout(
+                    changelog: false, 
+                    poll: false, 
+                    scm: [$class: 'SubversionSCM', 
+                        additionalCredentials: [], 
+                        excludedCommitMessages: '', 
+                        excludedRegions: '', 
+                        excludedRevprop: '', 
+                        excludedUsers: '', 
+                        filterChangelog: false, 
+                        ignoreDirPropChanges: false, 
+                        includedRegions: '', 
+                        locations: [[cancelProcessOnExternalsFail: true, 
+                            credentialsId: '', 
+                            depthOption: 'infinity', 
+                            ignoreExternalsOption: false, 
+                            local: '.', 
+                            remote: scm.locations[1].remote]], 
+                        quietOperation: true, 
+                        workspaceUpdater: [$class: 'UpdateWithCleanUpdater']]
+                )
+            }
+        }
+
+        stage('build and test with pitest mutation tests'){
+            when {
+                expression {
+                    return params.withPitest.toBoolean() == true
+                }
+            }
+            steps {
+            	retry(2) {
+	            	timeout(activity: true, time: 2, unit: 'HOURS') {
+		                withMaven(
+		                    options: [jacocoPublisher(disabled: true), 
+		                    junitPublisher(disabled: true)], 
+		                    jdk: "${jdk_version}",
+		                    mavenLocalRepo: '$JENKINS_HOME/.m2/$EXECUTOR_NUMBER/repository', 
+		                    maven: "${maven_version}") {
+		                        sh "mvn clean jacoco:prepare-agent install \
+		                            org.pitest:pitest-maven:mutationCoverage \
+		                            jacoco:report -DBuild-ID=${env.BUILD_NUMBER} -DRevision-ID=${env.SVN_REVISION} \
+		                            -U -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn "
+	                    }
+					}
+				}
+            }
+        }
+
+        stage('build and test without pitest'){
+            when { 
+                not {
+                    expression {
+                        return params.withPitest.toBoolean() == true
+                    }
+                }
+            }
+            steps {
+            	retry(2) {
+	                timeout(activity: true, time: 2, unit: 'HOURS') {
+		                // use jacoco publisher later on - exclusionPattern don't work here...!
+		                withMaven(
+		                    options: [jacocoPublisher(disabled: true), 
+		                    junitPublisher(disabled: true)], 
+		                    jdk: "${jdk_version}", 
+		                    mavenLocalRepo: '$JENKINS_HOME/.m2/$EXECUTOR_NUMBER/repository',
+		                    maven: "${maven_version}") {
+		                        sh "mvn clean jacoco:prepare-agent install \
+		                            jacoco:report -DBuild-ID=${env.BUILD_NUMBER} -DRevision-ID=${env.SVN_REVISION} \
+		                            -U -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn "
+		                }
+	                }
+                }
+            }
+        }
+
+        stage('deploy artifacts'){
+            steps {
+                withMaven(
+                    options: [jacocoPublisher(disabled: true), 
+                    junitPublisher(disabled: true),
+                    // options for dependencies between pipeline jobs...
+                    mavenLinkerPublisher(), pipelineGraphPublisher()], 
+                    jdk: "${jdk_version}",
+                    mavenLocalRepo: '$JENKINS_HOME/.m2/$EXECUTOR_NUMBER/repository', 
+                    maven: "${maven_version}") {
+                        sh "mvn deploy -Dmaven.test.skip=true "
+                }
+            }
+        }
+        
+        
+        stage('checkstyle and spotbugs analysis'){
+            steps {
+            	// try to ignore failing analysis - checkstyle at this time...!
+            	catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+	                withMaven(
+	                    options: [jacocoPublisher(disabled: true), 
+	                    junitPublisher(disabled: true)], 
+	                    jdk: "${jdk_version}",
+	                    mavenLocalRepo: '$JENKINS_HOME/.m2/$EXECUTOR_NUMBER/repository', 
+	                    maven: "${maven_version}") {
+	                        sh "mvn spotbugs:spotbugs \
+	                            checkstyle:checkstyle -Dmaven.test.skip=true "
+					}
+				}
+            }
+        }
+        
+        stage('SCA shell script') {
+             steps {
+                withCredentials([string(credentialsId: 'SRCCLR_API_TOKEN', variable: 'SRCCLR_API_TOKEN')]) {
+                	echo "srcclr scan"
+                   	sh (script: """
+                   			cd BwmsInwmsX
+                   			curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --allow-dirty --update-advisor --recursive --scm-uri https://example.com/WmsX-Bend --scm-rev ${env.BUILD_NUMBER} --scm-ref trunk --scm-ref-type branch
+                   			cd ..
+						""")
+        		}
+    		}
+		}
+    }
+
+    post {
+        always {
+            catchError(buildResult: 'UNSTABLE', message: 'Error from publish build results', stageResult: 'FAILURE'){
+                junit testResults: '**/target/surefire-reports/TEST-*.xml'
+
+                // older style test coverage...:
+                jacoco exclusionPattern: 'com/inconso/bend/**/config/*,com/inconso/bend/**/pers/**/*,com/inconso/bend/template/**/*,com/inconso/bend/**/gen/**/*,com/inconso/bend/**/service/*,com/inconso/bend/**/api/*,**/*Test*'
+
+                // Jacoco code coverage with "new, fancy" layout from "Code Coverage API Plugin"
+                // but: no exclusionPatterns like in "jacoco" - so statistics differ!!!
+                // Update 01/2021: exclusion pattern from SuperPom, only Interfaces still count "negative" --> again activated...
+                publishCoverage(
+                    adapters: [
+                        jacocoAdapter(
+                            mergeToOneReport: true, 
+                            path: '**/target/site/jacoco/jacoco.xml',
+                            // TODO: vernuenftige Werte festlegen... 
+//                            thresholds: [[
+//                                thresholdTarget: 'Line', 
+//                                unhealthyThreshold: 30.0, 
+//                                unstableThreshold: 50.0
+//                            ]]
+                        )
+                    ],
+                    skipPublishingChecks: true,
+                    sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
+                )
+
+                // recorded issues seem to be duplicated...at least only one of them could be activated!
+                // recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()]
+
+                // every tool together now:
+                recordIssues(
+                    healthy: 50, 
+                    minimumSeverity: 'HIGH',
+                    tools: [
+                        taskScanner(
+                            highTags: 'FIXME', 
+                            includePattern: '**/*.java', 
+                            lowTags: 'XXX', 
+                            normalTags: 'TODO'), 
+                        checkStyle(),
+                        spotBugs(useRankAsPriority: true),
+                        javaDoc(),
+                        mavenConsole(), 
+                        java()
+                    ],
+                    unhealthy: 400
+                )
+
+                recordIssues(
+                    aggregatingResults: false, 
+                    tools: [
+                        pit(
+                            pattern: '**/target/pit-reports/**/mutations.xml'
+                        )
+                    ]
+                )
+                archiveArtifacts(
+                    allowEmptyArchive: true, 
+                    artifacts: '**/target/pit-reports/'
+                )
+
+                // Problem: Pfad mit Projektname...! mit "**" wird leider nichts gefunden...!            	
+                // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'BwmsOccupation/target/pit-reports/', reportFiles: 'index.html', reportName: 'PIT Mutation Report', reportTitles: ''])
+            }
+
+            // Clean after build
+            cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, notFailBuild: true
+        }
+
+        regression {
+            emailext(
+                recipientProviders: [brokenTestsSuspects(), culprits(), upstreamDevelopers()], 
+                subject: "Jenkins build became unstable: ${currentBuild.fullDisplayName}",
+                body: "See ${env.BUILD_URL}"
+            )
+        }
+
+        fixed {
+            emailext(
+                recipientProviders: [brokenTestsSuspects(), culprits(), upstreamDevelopers()], 
+                subject: "Pipeline: ${currentBuild.fullDisplayName} is back to stable",
+                body: "See ${env.BUILD_URL}")
+            }
+        }
+    }

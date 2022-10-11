@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View PAC_V_ORDER_ITEM</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.PAC_V_ORDER_ITEM">
+ <META name="description" content="">
+ <META name="columns" content="ID_SITE ID_CLIENT ID_ORDER NUM_PARTIAL_ORDER NUM_ITEM ID_ARTICLE TXT_LABEL STAT QTY_TARGET QTY_CANCELED UNIT_STOCK QTY_SHORTAGE QTY_REPICK QTY_PACKED">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View PAC_V_ORDER_ITEM</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_CLIENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ORDER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+NUM_PARTIAL_ORDER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+NUM_ITEM
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(6)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TXT_LABEL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STAT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY_TARGET
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY_CANCELED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+UNIT_STOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY_SHORTAGE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY_REPICK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY_PACKED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+create or replace view pac_v_order_item as
+select
+    z.id_site
+    , z.id_client
+    , z.id_order
+    , z.num_partial_order
+    , z.num_item
+    , z.id_article
+    , z.txt_label
+    , z.stat
+    , z.qty_target
+    , z.qty_canceled
+    , z.unit_stock
+    , sum(z.qty_shortage) as qty_shortage
+    , sum(z.qty_repick) as qty_repick
+    , sum(z.qty_packed) as qty_packed
+from (
+    select
+        y.id_site
+        , y.id_client
+        , y.id_order
+        , y.num_partial_order
+        , y.num_item
+        , y.id_article
+        , y.txt_label
+        , y.stat
+        , y.qty_target
+        , y.qty_canceled
+        , y.unit_stock
+        , y.id_record
+        , y.typ
+        , y.qty_shortage
+        , case when (y.pos_reserv > y.pos_picking and y.pos_picking > 0) or (y.pos_reserv > 0 and y.typ_step = 'RESERV') then y.qty else 0 end as qty_repick
+        , case when y.typ = 'LUUNOPENED'
+                  or y.pos_packing > y.pos_reserv_last
+                  or y.stat_step = '70' then y.qty
+               else 0 end as qty_packed
+    from (
+        select
+            x.id_site
+            , x.id_client
+            , x.id_order
+            , x.num_partial_order
+            , x.num_item
+            , x.id_article
+            , x.txt_label
+            , x.stat
+            , x.qty_target
+            , x.qty_canceled
+            , x.unit_stock
+            , x.id_record
+            , x.typ
+            , x.typ_step
+            , x.stat_step
+            , x.qty
+            , x.qty_shortage
+            , max(decode(ps.typ_step,'RESERV',ps.num_consec,0))  pos_reserv
+            , max(decode(ps.typ_step,'PICKING',ps.num_consec,0)) pos_picking
+            , max(decode(ps.typ_step,'PACKING',ps.num_consec,0)) pos_packing
+            , max(decode(psl.typ_step,'RESERV',psl.num_consec,0))  pos_reserv_last
+        from (
+            select
+                oi.id_site,
+                oi.id_client,
+                oi.id_order,
+                oi.num_partial_order,
+                oi.num_item,
+                oi.id_article,
+                art.txt_label,
+                art.stat,
+                oi.qty_target,
+                oi.qty_canceled,
+                art.unit_stock,
+                pr.id_record,
+                pr.typ,
+                pr.typ_step,
+                pr.stat_step,
+                pr.qty,
+                case when pr.typ_step = 'PACKING' and pr.stat_step = '25' then pr.qty else 0 end qty_shortage
+            from
+                gi_order_item oi,
+                art_article art,
+                bps_process_record pr
+            where
+                art.id_client   = oi.id_client_art
+                and art.id_article  = oi.id_article
+                and pr.id_site      = oi.id_site
+                and pr.typ_ref      = 'ORDER_ITEM'
+                and pr.id_ref_1     = oi.id_site
+                and pr.id_ref_2     = oi.id_client
+                and pr.id_ref_3     = oi.id_order
+                and pr.id_ref_4     = oi.num_partial_order
+                and pr.id_ref_5     = oi.num_item
+                and pr.stat        != '80'
+                --and pr.typ         != 'LUUNOPENED'
+            ) x,
+            bps_process_step ps,
+            bps_process_step psl
+        where
+            ps.id_site(+)     = x.id_site
+            and ps.id_record(+)   = x.id_record
+            and ps.stat_step(+)   = '90'
+            and ps.typ_step(+)   in ('RESERV','PICKING','PACKING')
+            and psl.id_site(+)    = x.id_site
+            and psl.id_record(+)  = x.id_record
+            and psl.typ_step(+)   = 'RESERV'
+        group by
+            x.id_site,
+            x.id_client,
+            x.id_order,
+            x.num_partial_order,
+            x.num_item,
+            x.id_article,
+            x.txt_label,
+            x.stat,
+            x.qty_target,
+            x.qty_canceled,
+            x.unit_stock,
+            x.id_record,
+            x.typ,
+            x.typ_step,
+            x.stat_step,
+            x.qty,
+            x.qty_shortage
+        ) y
+    ) z
+group by
+        z.id_site
+    , z.id_client
+    , z.id_order
+    , z.num_partial_order
+    , z.num_item
+    , z.id_article
+    , z.txt_label
+    , z.stat
+    , z.qty_target
+    , z.qty_canceled
+    , z.unit_stock
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

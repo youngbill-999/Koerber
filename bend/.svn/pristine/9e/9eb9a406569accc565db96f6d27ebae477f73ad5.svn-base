@@ -1,0 +1,25 @@
+CodegenComponent=!!<Name-Der-Iwf-Komponente>!!
+Modus=BEND
+ExtendSuffix=Ext
+ExtendNaming=Extend
+
+ModelProject=Model
+BendBasePackage=com.inconso.bend.bwmsinwmsx.pers
+PkExtension=Pk
+GenExtension=Gen
+RepositoryExtension=Rep
+JavaSrcPath=/src/main/java/
+# Audit style
+AuditStyle=BEND
+
+TemplatePackageBend=com.inconso.bend.template.bwmsinwmsx
+#For the location class
+BendComponentName=BwmsInwmsX
+
+
+TemplatePackageIwf=com.inconso.iwf.template.bend
+IwfBasePackage=com.inconso.iwf.bend
+DescNamespace=Desc
+DescPath=map.desc
+CompName=Comp
+GenProject=GenProject

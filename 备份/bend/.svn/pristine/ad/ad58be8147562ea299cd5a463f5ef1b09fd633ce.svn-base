@@ -1,0 +1,407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View IM_V_LBL_PID</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.IM_V_LBL_PID">
+ <META name="description" content="">
+ <META name="columns" content="ID_SITE ID_LU TYP_LU LE_TXT ID_CLIENT ID_ARTICLE ART_TXT QTY UNIT_STOCK ID_BATCH TS_BBD TS_GOODS_RECEIPT">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View IM_V_LBL_PID</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+LE_TXT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_CLIENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ART_TXT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+UNIT_STOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_BATCH
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TS_BBD
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(40)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TS_GOODS_RECEIPT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(40)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+create or replace view im_v_lbl_pid as
+select y.id_site,
+-----------------------------------------------------------------------------
+-- Component  : WMS_INVENTORY
+-- HEAD URL   : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/10_wms/wms_inventory/snapshot/comp/inst_components/db/dbobj/views/im_v_lbl_pid.vew $
+-- Revision   : $Rev: 33567 $
+-- Change at  : $Id: im_v_lbl_pid.vew 33567 2019-07-04 10:47:28Z sfarsad-assadi $
+-- Change by  : $Author: sfarsad-assadi $
+-- Copyrights : (C) inconso AG, Germany
+-- Description: view for PID label
+-----------------------------------------------------------------------------
+       y.id_lu,
+       y.typ_lu,
+       y.lt_txt_label le_txt,
+       y.id_client,
+       y.id_article,
+       decode(y.count_qu,0,'Empty LU',decode(y.id_article ,null,'Mix LU',art.txt_label)) art_txt,
+       y.qty,
+       art.unit_stock,
+       y.id_batch,
+       decode(y.id_article,null,null,to_char(y.min_ts_bbd,'DD.MM.YYYY')) ts_bbd,
+       decode(y.id_article,null,null,to_char(y.min_ts_gr,'DD.MM.YYYY')) ts_goods_receipt
+from
+(
+select x.id_site,
+       x.id_lu,
+       x.typ_lu,
+       x.lt_txt_label,
+       decode(x.min_id_client,x.max_id_client,x.min_id_client,null) id_client,
+       decode(x.min_id_article,x.max_id_article,x.min_id_article,null) id_article,
+       decode(min_id_article,max_id_article,qty,null) qty,
+       decode(min_id_article,max_id_article,decode(min_id_batch,max_id_batch,min_id_batch,null),null) id_batch,
+       x.min_ts_gr,
+       x.min_ts_bbd,
+       x.count_qu
+  from
+(
+select lu.id_site,
+       lu.id_lu,
+       lu.typ_lu,
+       lt.txt_label lt_txt_label,
+       count(distinct qu.id_quantum) count_qu,
+       min(qu.id_client) min_id_client,
+       max(qu.id_client) max_id_client,
+       min(qu.id_article) min_id_article,
+       max(qu.id_article) max_id_article,
+       sum(qu.qty_available + qu.qty_reserved) qty,
+       min(qu.id_batch) min_id_batch,
+       max(qu.id_batch) max_id_batch,
+       min(qu.ts_bbd) min_ts_bbd,
+       min(qu.ts_goods_receipt) min_ts_gr
+  from im_load_unit lu,
+       top_lu_type lt,
+       im_quantum qu
+ where lt.id_site = lu.id_site
+   and lt.typ_lu  = lu.typ_lu
+   and qu.id_site = lu.id_site
+   and qu.id_lu_1 = lu.id_lu
+ group by lu.id_site,
+          lu.id_lu,
+          lu.typ_lu,
+          lt.txt_label
+union
+select lu.id_site,
+       lu.id_lu,
+       lu.typ_lu,
+       lt.txt_label lt_txt_label,
+       count(distinct qu.id_quantum) count_qu,
+       min(qu.id_client) min_id_client,
+       max(qu.id_client) max_id_client,
+       min(qu.id_article) min_id_article,
+       max(qu.id_article) max_id_article,
+       sum(qu.qty_available + qu.qty_reserved) qty,
+       min(qu.id_batch) min_id_batch,
+       max(qu.id_batch) max_id_batch,
+       min(qu.ts_bbd) min_ts_bbd,
+       min(qu.ts_goods_receipt) min_ts_gr
+  from im_load_unit lu,
+       top_lu_type lt,
+       im_quantum qu
+ where lt.id_site = lu.id_site
+   and lt.typ_lu  = lu.typ_lu
+   and qu.id_site = lu.id_site
+   and qu.id_lu_2 = lu.id_lu
+ group by lu.id_site,
+          lu.id_lu,
+          lu.typ_lu,
+          lt.txt_label
+union
+select lu.id_site,
+       lu.id_lu,
+       lu.typ_lu,
+       lt.txt_label lt_txt_label,
+       count(distinct qu.id_quantum) count_qu,
+       min(qu.id_client) min_id_client,
+       max(qu.id_client) max_id_client,
+       min(qu.id_article) min_id_article,
+       max(qu.id_article) max_id_article,
+       sum(qu.qty_available + qu.qty_reserved) qty,
+       min(qu.id_batch) min_id_batch,
+       max(qu.id_batch) max_id_batch,
+       min(qu.ts_bbd) min_ts_bbd,
+       min(qu.ts_goods_receipt) min_ts_gr
+  from im_load_unit lu,
+       top_lu_type lt,
+       im_quantum qu
+ where lt.id_site  = lu.id_site
+   and lt.typ_lu   = lu.typ_lu
+   and qu.id_site  = lu.id_site
+   and qu.id_lu_3  = lu.id_lu
+ group by lu.id_site,
+          lu.id_lu,
+          lu.typ_lu,
+          lt.txt_label
+union
+select lu.id_site,
+       lu.id_lu,
+       lu.typ_lu,
+       lt.txt_label lt_txt_label,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
+  from im_load_unit lu,
+       top_lu_type lt
+ where lt.id_site = lu.id_site
+   and lt.typ_lu  = lu.typ_lu
+   and not exists (select 1
+                     from im_quantum qu
+                    where qu.id_site = lu.id_site
+                      and (   qu.id_lu_1 = lu.id_lu
+                           or qu.id_lu_2 = lu.id_lu
+                           or qu.id_lu_3 = lu.id_lu))
+) x
+) y,
+  art_article art
+ where art.id_client(+)  = y.id_client
+   and art.id_article(+) = y.id_article
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

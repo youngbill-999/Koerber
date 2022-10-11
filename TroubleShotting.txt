@@ -41,3 +41,10 @@ BEND error code的定义在BendCoreTextCodes中
 
 
 C-inconso-scrirpt-map click once when vpn unavail
+
+
+在feature中有些行对应的方法步骤不一致但是能执行
+
+
+
+在chasc中，有一些商品比如PK1用户的商品是要求输入SAPP的，这些config的要求在WB210中能够看到

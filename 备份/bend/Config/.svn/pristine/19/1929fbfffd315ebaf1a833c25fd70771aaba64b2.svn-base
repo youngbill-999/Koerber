@@ -1,0 +1,39 @@
+ 
+<!-- 	This file defines which kind of bugs are excluded from the findbug report. 
+		For a list of all possible bugs see 
+		http://findbugs.sourceforge.net/bugDescriptions.html 						-->
+<FindBugsFilter>
+<!-- Ignore Unread fields (public, protected and private) -->
+     <Match>
+       <Bug code="UrF,UuF" />
+     </Match>
+     <Match>
+     <Bug code="EI2,EI"></Bug>
+     </Match>
+<!-- Ignore code created by eclipselink weaving -->
+     <Match>
+      <Method name="_persistence_get" params="java.lang.String" />
+      <Bug pattern="ES_COMPARING_PARAMETER_STRING_WITH_EQ,EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+    </Match>
+    <Match>
+      <Method name="_persistence_get" params="java.util.Date" />
+      <Bug pattern="ES_COMPARING_PARAMETER_STRING_WITH_EQ,EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+    </Match>
+    <Match>
+      <Method name="_persistence_set"/>
+      <Bug pattern="ES_COMPARING_PARAMETER_STRING_WITH_EQ,EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+    </Match>
+    <Match>
+     <Class name="~.*\StandardAudit" />
+      <Bug pattern="EI_EXPOSE_REP2,EI_EXPOSE_REP" />
+    </Match>
+    <Match>
+     <Class name="~.*\.*Test" />
+      <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT,THROWS_METHOD_THROWS_CLAUSE_THROWABLE,THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION" />
+    </Match>
+    <Match>
+     <Class name="~.*\.*Desc" />
+      <Bug pattern="MS_EXPOSE_REP" />
+    </Match>
+     
+</FindBugsFilter>

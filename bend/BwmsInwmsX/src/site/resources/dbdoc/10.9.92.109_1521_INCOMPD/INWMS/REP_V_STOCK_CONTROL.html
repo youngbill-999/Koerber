@@ -1,0 +1,700 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View REP_V_STOCK_CONTROL</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.REP_V_STOCK_CONTROL">
+ <META name="description" content="">
+ <META name="columns" content="ID_RSC ID_SITE ID_CLIENT ID_ARTICLE STORAGE_AREA STORAGE_LOCATION ID_STORE_OUT_ZONE TYP_STOCK TYP_LOCK ARTVAR TYP_SPECIAL_STOCK ID_SPECIAL_STOCK STAT_QUALITY_CONTROL STAT_CUSTOMS ID_BATCH SEP_CRIT_01 SEP_CRIT_02 SEP_CRIT_03 SEP_CRIT_04 SEP_CRIT_05 SEP_CRIT_06 SEP_CRIT_07 SEP_CRIT_08 SEP_CRIT_09 SEP_CRIT_10 QTY_ACTUAL CNT_LU_ACTUAL">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View REP_V_STOCK_CONTROL</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_RSC
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(2364)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_CLIENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STORAGE_AREA
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STORAGE_LOCATION
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(260)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_STORE_OUT_ZONE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_STOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_LOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ARTVAR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_SPECIAL_STOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SPECIAL_STOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STAT_QUALITY_CONTROL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STAT_CUSTOMS
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_BATCH
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_01
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_02
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_03
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_04
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_05
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_06
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_07
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_08
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_09
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SEP_CRIT_10
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY_ACTUAL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+CNT_LU_ACTUAL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+create or replace view rep_v_stock_control as
+select rsc.id_site                                     ||'@'||
+          rsc.id_client                                   ||'@'||
+          rsc.id_article                                  ||'@'||
+          coalesce ( rsc.storage_area        , '<NULL>' ) ||'@'||
+          coalesce ( rsc.storage_location    , '<NULL>' ) ||'@'||
+          coalesce ( rsc.id_store_out_zone   , '<NULL>' ) ||'@'||
+          coalesce ( rsc.typ_stock           , '<NULL>' ) ||'@'||
+          coalesce ( rsc.typ_lock            , '<NULL>' ) ||'@'||
+          coalesce ( rsc.artvar              , '<NULL>' ) ||'@'||
+          coalesce ( rsc.typ_special_stock   , '<NULL>' ) ||'@'||
+          coalesce ( rsc.id_special_stock    , '<NULL>' ) ||'@'||
+          coalesce ( rsc.stat_quality_control, '<NULL>' ) ||'@'||
+          coalesce ( rsc.stat_customs        , '<NULL>' ) ||'@'||
+          coalesce ( rsc.id_batch            , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_01         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_02         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_03         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_04         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_05         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_06         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_07         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_08         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_09         , '<NULL>' ) ||'@'||
+          coalesce ( rsc.sep_crit_10         , '<NULL>' ) ||'@'   as id_rsc,
+          rsc.id_site,
+          rsc.id_client,
+          rsc.id_article,
+          rsc.storage_area,
+          rsc.storage_location,
+          rsc.id_store_out_zone,
+          rsc.typ_stock,
+          rsc.typ_lock,
+          rsc.artvar,
+          rsc.typ_special_stock,
+          rsc.id_special_stock,
+          rsc.stat_quality_control,
+          rsc.stat_customs,
+          rsc.id_batch,
+          rsc.sep_crit_01,
+          rsc.sep_crit_02,
+          rsc.sep_crit_03,
+          rsc.sep_crit_04,
+          rsc.sep_crit_05,
+          rsc.sep_crit_06,
+          rsc.sep_crit_07,
+          rsc.sep_crit_08,
+          rsc.sep_crit_09,
+          rsc.sep_crit_10,
+          sum ( rsc.qty_available )          as qty_actual,
+          count ( distinct ( rsc.id_lu ) )   as cnt_lu_actual
+            -- quantum available stock
+     from ( select imq.id_site,
+                   imq.id_quantum,
+                   imq.id_client,
+                   imq.id_article,
+                   imq.storage_area,
+                   imq.storage_location,
+                   topsl.id_store_out_zone,
+                   imq.id_lu_1               as id_lu,
+                   imq.typ_stock,
+                   imq.typ_lock,
+                   imq.artvar,
+                   imq.typ_special_stock,
+                   imq.id_special_stock,
+                   imq.stat_quality_control,
+                   imq.stat_customs,
+                   imq.id_batch,
+                   imq.sep_crit_01,
+                   imq.sep_crit_02,
+                   imq.sep_crit_03,
+                   imq.sep_crit_04,
+                   imq.sep_crit_05,
+                   imq.sep_crit_06,
+                   imq.sep_crit_07,
+                   imq.sep_crit_08,
+                   imq.sep_crit_09,
+                   imq.sep_crit_10,
+                   imq.qty_available
+                   --
+              from im_quantum imq
+                   --
+              join top_storage_location topsl
+                on imq.id_site          = topsl.id_site
+               and imq.storage_area     = topsl.storage_area
+               and imq.storage_location = topsl.storage_location
+                   --
+             where imq.qty_available    > 0
+                   --
+             union
+                   -- replenishment request / process record stock under way
+            select bpspr.id_site,
+                   bpspr.id_quantum_src,
+                   bpspr.id_client,
+                   bpspr.id_article,
+                   reprr.storage_area,
+                   reprr.storage_location,
+                   coalesce ( reprr.id_store_out_zone, topsl.id_store_out_zone ) as id_store_out_zone,
+                   coalesce ( bpspr.id_lu_src, bpspr.id_record )                 as id_lu,
+                   bpspr.typ_stock,
+                   bpspr.typ_lock,
+                   bpspr.artvar,
+                   bpspr.typ_special_stock,
+                   bpspr.id_special_stock,
+                   bpspr.stat_quality_control,
+                   bpspr.stat_customs,
+                   bpspr.id_batch,
+                   bpspr.sep_crit_01,
+                   bpspr.sep_crit_02,
+                   bpspr.sep_crit_03,
+                   bpspr.sep_crit_04,
+                   bpspr.sep_crit_05,
+                   bpspr.sep_crit_06,
+                   bpspr.sep_crit_07,
+                   bpspr.sep_crit_08,
+                   bpspr.sep_crit_09,
+                   bpspr.sep_crit_10,
+                   bpspr.qty                                                     as qty_available
+                   --
+              from bps_process_record bpspr
+              join rep_replenishment_request reprr
+                on bpspr.id_ref_1 = reprr.id_site
+               and bpspr.id_ref_2 = reprr.id_replenishment
+                   --
+   left outer join top_storage_location topsl
+                on topsl.id_site          = reprr.id_site
+               and topsl.storage_area     = reprr.storage_area
+               and topsl.storage_location = reprr.storage_location
+                   --
+             where bpspr.typ_ref              = 'REP_REQUEST'  -- process record reference type replenishment request
+               and bpspr.stat                 < '80'           -- process record status CANCELED
+                   --
+               and reprr.stat                >= '10'           -- replenishment request status PLANNED
+               and reprr.stat                 < '80'           -- replenishment request status CANCELED
+                   --
+               and (    (     bpspr.id_quantum_src is null     -- replenishment request / process record is not reserved
+                          and bpspr.id_lu_src      is null )
+                     or (     not exists ( select 1            -- LU is not in transit to or is not on the target storage location
+                                             from im_load_unit lu
+                                            where lu.id_site           = bpspr.id_site
+                                              and lu.id_lu             = coalesce ( bpspr.id_lu_tgt, bpspr.id_lu_src )
+                                              and lu.storage_area      = reprr.storage_area
+                                              and lu.storage_location  = reprr.storage_location )
+                          and not exists ( select 1            -- LU is not in transit to or is not in the target store out zone
+                                             from im_load_unit lu
+                                             join top_storage_location sl
+                                               on lu.id_site           = sl.id_site
+                                              and lu.storage_area      = sl.storage_area
+                                              and lu.storage_location  = sl.storage_location
+                                            where lu.id_site           = bpspr.id_site
+                                              and lu.id_lu             = coalesce ( bpspr.id_lu_tgt, bpspr.id_lu_src )
+                                              and sl.id_store_out_zone = reprr.id_store_out_zone )
+                       )
+                    or (     bpspr.id_quantum_src is not null  -- Picking has not been performed yet, case quantum without LU
+                         and bpspr.id_lu_src      is null
+                       )
+                   )
+           ) rsc
+  group by rsc.id_site,
+           rsc.id_client,
+           rsc.id_article,
+           rsc.storage_area,
+           rsc.storage_location,
+           rsc.id_store_out_zone,
+           rsc.typ_stock,
+           rsc.typ_lock,
+           rsc.artvar,
+           rsc.typ_special_stock,
+           rsc.id_special_stock,
+           rsc.stat_quality_control,
+           rsc.stat_customs,
+           rsc.id_batch,
+           rsc.sep_crit_01,
+           rsc.sep_crit_02,
+           rsc.sep_crit_03,
+           rsc.sep_crit_04,
+           rsc.sep_crit_05,
+           rsc.sep_crit_06,
+           rsc.sep_crit_07,
+           rsc.sep_crit_08,
+           rsc.sep_crit_09,
+           rsc.sep_crit_10
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

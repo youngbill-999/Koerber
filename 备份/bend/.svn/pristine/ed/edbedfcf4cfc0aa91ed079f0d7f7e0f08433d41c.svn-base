@@ -1,0 +1,766 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View SHIP_V_CONTROL_LOADING</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.SHIP_V_CONTROL_LOADING">
+ <META name="description" content="">
+ <META name="columns" content="ID_SITE ID_LOADING ID_GATE TYP_SHIPMENT STAT TS_CUT_OFF WT_MAX VOL_MAX WT_CURR VOL_CURR CNT_ORDER MIN_STAT MAX_STAT STOCKAVAIL_OPEN STOCKAVAIL_FINISHED RESERV_OPEN RESERV_FINISHED PICKING_OPEN PICKING_FINISHED PACKING_OPEN PACKING_FINISHED TRANSPORT_OPEN TRANSPORT_FINISHED OPEN FINISHED PERCENT_ALL PERCENT_STOCKAVAIL PERCENT_RESERV PERCENT_PICKING PERCENT_PACKING PERCENT_TRANSPORT COLOR">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View SHIP_V_CONTROL_LOADING</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_LOADING
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_GATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_SHIPMENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STAT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TS_CUT_OFF
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+DATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+WT_MAX
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+VOL_MAX
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+WT_CURR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+VOL_CURR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+CNT_ORDER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+MIN_STAT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+MAX_STAT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STOCKAVAIL_OPEN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STOCKAVAIL_FINISHED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+RESERV_OPEN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+RESERV_FINISHED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PICKING_OPEN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PICKING_FINISHED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PACKING_OPEN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PACKING_FINISHED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TRANSPORT_OPEN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TRANSPORT_FINISHED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+OPEN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FINISHED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PERCENT_ALL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PERCENT_STOCKAVAIL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PERCENT_RESERV
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PERCENT_PICKING
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PERCENT_PACKING
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+PERCENT_TRANSPORT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COLOR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+CHAR(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+create or replace view ship_v_control_loading as
+select y."ID_SITE",y."ID_LOADING",y."ID_GATE",y."TYP_SHIPMENT",y."STAT",y."TS_CUT_OFF",y."WT_MAX",y."VOL_MAX",y."WT_CURR",y."VOL_CURR",y."CNT_ORDER",y."MIN_STAT",y."MAX_STAT",y."STOCKAVAIL_OPEN",y."STOCKAVAIL_FINISHED",y."RESERV_OPEN",y."RESERV_FINISHED",y."PICKING_OPEN",y."PICKING_FINISHED",y."PACKING_OPEN",y."PACKING_FINISHED",y."TRANSPORT_OPEN",y."TRANSPORT_FINISHED",y."OPEN",y."FINISHED",
+-----------------------------------------------------------------------------
+-- Komponente     : WMS_ARTICLE
+-- HEAD URL       : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/10_wms/wms_shipping/snapshot/comp/inst_components/db/dbobj/views/ship_v_control_loading.vew $
+-- Revision       : $Rev: 39208 $
+-- Aenderung am   : $Id: ship_v_control_loading.vew 39208 2019-09-11 16:48:16Z sfarsad-assadi $
+-- Aenderung durch: $Author: sfarsad-assadi $
+-- Copyrights     : (C) inconso AG, Germany
+-- Beschreibung   : View to select quantity information of packing units / formally known as v_we230_letypen
+-----------------------------------------------------------------------------
+       round(100 * y.finished / (y.open + y.finished),2) percent_all,
+       round(100 * y.stockavail_finished / (y.stockavail_open + y.stockavail_finished),2) percent_stockavail,
+       round(100 * y.reserv_finished / (y.reserv_open + y.reserv_finished),2) percent_reserv,
+       round(100 * y.picking_finished / (y.picking_open + y.picking_finished),2) percent_picking,
+       round(100 * y.packing_finished / (y.packing_open + y.packing_finished),2) percent_packing,
+       (case
+        when (y.transport_open + y.transport_finished) = 0 then 0
+        else (round(100 * y.transport_finished / (y.transport_open + y.transport_finished),2))
+        end) percent_transport,
+       (case
+        when y.stockavail_open > 0 or y.reserv_open > 0 then 'r'
+        when y.picking_open > 0                         then 'o'
+        when y.packing_open > 0                         then 'y'
+        else                                                 'g'
+        end) color
+  from
+(
+select x.id_site,
+       x.id_loading,
+       x.id_gate,
+       x.typ_shipment,
+       x.stat,
+       x.ts_cut_off,
+       x.wt_max,
+       x.vol_max,
+       x.wt_curr,
+       x.vol_curr,
+       count(distinct x.id_client||'@'||x.id_order||'@'||to_char(x.num_partial_order)) cnt_order,
+       min(x.stat_go) min_stat,
+       max(x.stat_go) max_stat,
+       sum(case
+           when x.typ_step = 'STOCKAVAIL' and x.stat_step  < '70' then 1
+           else 0
+           end) stockavail_open,
+       sum(case
+           when x.typ_step = 'STOCKAVAIL' and x.stat_step >= '70' then 1
+           else 0
+           end) stockavail_finished,
+       sum(case
+           when x.typ_step = 'RESERV' and x.stat_step  < '70' then 1
+           else 0
+           end) reserv_open,
+       sum(case
+           when x.typ_step = 'RESERV' and x.stat_step >= '70' then 1
+           else 0
+           end) reserv_finished,
+       sum(case
+           when x.typ_step = 'PICKING' and x.stat_step  < '70' then 1
+           else 0
+           end) picking_open,
+       sum(case
+           when x.typ_step = 'PICKING' and x.stat_step >= '70' then 1
+           else 0
+           end) picking_finished,
+       sum(case
+           when x.typ_step = 'PACKING' and x.stat_step  < '70' then 1
+           else 0
+           end) packing_open,
+       sum(case
+           when x.typ_step = 'PACKING' and x.stat_step >= '70' then 1
+           else 0
+           end) packing_finished,
+       sum(case
+           when x.typ_step = 'TRANSPORT' and x.stat_step  < '70' then 1
+           else 0
+           end) transport_open,
+       sum(case
+           when x.typ_step = 'TRANSPORT' and x.stat_step >= '70' then 1
+           else 0
+           end) transport_finished,
+       sum(case
+           when x.stat_step  < '70' then 1
+           else 0
+           end) open,
+       sum(case
+           when x.stat_step >= '70' then 1
+           else 0
+           end) finished
+  from
+(
+select ll.id_site,
+       ll.id_loading,
+       ll.id_gate,
+       ll.stat,
+       ll.ts_cut_off,
+       soa.id_client,
+       soa.id_order,
+       soa.num_partial_order,
+       soa.typ_shipment,
+       go.stat stat_go,
+       bpr.id_record,
+       bps.num_consec,
+       bps.typ_step,
+       bps.stat_step,
+       ll.wt_max,
+       ll.vol_max,
+       sum(coalesce(bot.wt_curr,0))  as wt_curr,
+       sum(coalesce(bot.vol_curr,0)) as vol_curr
+  from load_loading ll,
+       ship_order_asgmt soa,
+       gi_order go,
+       bps_process_record bpr,
+       bps_process_step bps,
+       ship_v_order_asgmt_bottom bot
+ where ll.id_site            = 'RL1'
+   and ll.stat               < '80'
+   and soa.id_site           = ll.id_site
+   and soa.id_loading        = ll.id_loading
+   and go.id_site            = soa.id_site
+   and go.id_client          = soa.id_client
+   and go.id_order           = soa.id_order
+   and go.num_partial_order  = soa.num_partial_order
+   and bpr.id_site           = go.id_site
+   and bpr.typ_ref           = 'ORDER_ITEM'
+   and bpr.id_ref_1          = go.id_site
+   and bpr.id_ref_2          = go.id_client
+   and bpr.id_ref_3          = go.id_order
+   and bpr.id_ref_4          = to_char(go.num_partial_order)
+   and bps.id_site           = bpr.id_site
+   and bps.id_record         = bpr.id_record
+   and bps.typ_step         != 'LOADING'
+   and bps.stat_step        != '80'
+   and bot.id_site           = ll.id_site
+   and bot.id_loading        = ll.id_loading
+   group by  ll.id_site,
+       ll.id_loading,
+       ll.id_gate,
+       ll.stat,
+       ll.ts_cut_off,
+       soa.id_client,
+       soa.id_order,
+       soa.num_partial_order,
+       soa.typ_shipment,
+       go.stat,
+       bpr.id_record,
+       bps.num_consec,
+       bps.typ_step,
+       bps.stat_step,
+       ll.wt_max,
+       ll.vol_max
+) x
+ group by x.id_site,
+          x.id_loading,
+          x.id_gate,
+          x.typ_shipment,
+          x.stat,
+          x.ts_cut_off,
+          x.wt_max,
+          x.vol_max,
+          x.wt_curr,
+          x.vol_curr
+) y
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

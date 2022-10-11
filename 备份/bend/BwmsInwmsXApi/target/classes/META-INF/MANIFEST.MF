@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Implementation-Title: BwmsInwmsXApi
+Implementation-Version: 4.10.0-SNAPSHOT
+Implementation-Vendor: Körber Supply Chain Software GmbH
+Build-ID: local Build
+Build-Time: 2022-10-05 13:32
+Created-By: Maven Integration for Eclipse
+Hostname: 
+SCM-Revision: 
+revision: 
+

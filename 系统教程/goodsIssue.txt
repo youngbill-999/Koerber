@@ -1,0 +1,10 @@
+1,Order preprocessing
+
+
+2.Stock availability check
+3.Reservation
+4.Order release
+5.Classification
+6.Picking
+7.Packing
+8.Loading

@@ -1,0 +1,677 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View GDL_V_STATETRIG_ERROR</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.GDL_V_STATETRIG_ERROR">
+ <META name="description" content="">
+ <META name="columns" content="ERROR ERR_LEVEL ID_GRAPH ID_STATE EVENT ACTION ID_DIALOG TRUE_STATE TRUE_EVENT FALSE_STATE FALSE_EVENT ID_CRE TS_CRE ID_UPD TS_UPD">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View GDL_V_STATETRIG_ERROR</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ERROR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(164)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ERR_LEVEL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(20)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_GRAPH
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_STATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+EVENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ACTION
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_DIALOG
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(120)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TRUE_STATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TRUE_EVENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FALSE_STATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FALSE_EVENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_CRE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TS_CRE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+DATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_UPD
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TS_UPD
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+DATE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+CREATE OR REPLACE VIEW GDL_V_STATETRIG_ERROR
+(error, err_level, id_graph, id_state, event, action, id_dialog, true_state, true_event, false_state, false_event, id_cre, ts_cre, id_upd, ts_upd)
+AS
+(
+-- alle Stati die NIE aufgerufen werden
+ SELECT distinct
+   -----------------------------------------------------------------------------
+   -- Komponente     : INWMS_GDL
+   -- HEAD URL       : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/00_iwf/iwf_gdl/snapshot/comp/inst_components/db/dbobj/views/gdl_v_statetrig_error.vew $
+   -- Revision       : $Rev: 17279 $
+   -- Aenderung am   : $Id: gdl_v_statetrig_error.vew 17279 2018-11-14 07:35:34Z jschmidt $
+   -- Aenderung durch: $Author: jschmidt $
+   -- Copyrights     : (C) inconso AG, Germany
+   -- Beschreibung   : Konsistenzpruefung
+   -----------------------------------------------------------------------------
+        'Kein Aufruf'
+      , 'WARN'
+      , id_graph
+      , id_state
+      , ' '
+      , ''
+      , ' '
+      , ''
+      , ''
+      , ''
+      , ''
+      , ''
+      , null
+      , ''
+      , null
+   FROM gdl_state_trig
+  WHERE id_state<> 'START'
+    AND (id_graph, id_state) NOT IN (
+                         SELECT id_graph, true_state
+                           FROM gdl_state_trig
+                          WHERE true_state IS NOT NULL
+                         UNION
+                         SELECT id_graph, false_state
+                           FROM gdl_state_trig
+                          WHERE false_state IS NOT NULL)
+--TRUE-Zweige
+ UNION
+ SELECT 'Verzweigung TRUE'
+      , 'ERROR'
+      , id_graph
+      , id_state
+      , event
+      , action
+      , ' '
+      , true_state
+      , true_event
+      , false_state
+      , false_event
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+   FROM gdl_state_trig
+  WHERE true_state IS NOT NULL
+    AND true_state <> 'EXIT'
+    AND (id_graph, true_state, true_event)
+             NOT IN (SELECT id_graph, id_state, event FROM gdl_state_trig)
+--FALSE-Zweige
+ UNION
+ SELECT 'Verzweigung FALSE'
+      , 'ERROR'
+      , id_graph
+      , id_state
+      , event
+      , action
+      , ' '
+      , true_state
+      , true_event
+      , false_state
+      , false_event
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+   FROM gdl_state_trig
+  WHERE false_state IS NOT NULL
+    AND false_state <> 'EXIT'
+    AND (id_graph, false_state, false_event)
+        NOT IN (SELECT id_graph,  id_state, event FROM gdl_state_trig)
+--LEERE Verzweigungen
+ UNION
+ SELECT 'Verzweigung LEER'
+      , 'ERROR'
+      , id_graph
+      , id_state
+      , event
+      , action
+      , ' '
+      , true_state
+      , true_event
+      , false_state
+      , false_event
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+   FROM gdl_state_trig
+  WHERE false_state IS NULL AND true_state IS NULL
+-- alle Dialoge ohne START
+ UNION
+ SELECT DISTINCT 'Kein START'
+                , 'ERROR'
+                , id_graph
+                , ' '
+                , ' '
+                , ''
+                , ' '
+                , ''
+                , ''
+                , ''
+                , ''
+                , ''
+                , null
+                , ''
+                , null
+            FROM gdl_state_trig
+           WHERE (id_graph ) NOT IN (SELECT id_graph FROM gdl_state_trig WHERE id_state= 'START' AND event = 'START')
+-- alle Stati ohne RESTART
+ UNION
+ SELECT DISTINCT 'Kein RESTART'
+                , 'INFO'
+                , id_graph
+                , id_state
+                , ' '
+                , ''
+                , ' '
+                , ''
+                , ''
+                , ''
+                , ''
+                , ''
+                , null
+                , ''
+                , null
+            FROM gdl_state_trig
+           WHERE (id_graph, id_state) NOT IN (SELECT id_graph, id_state
+                                            FROM gdl_state_trig
+                                           WHERE event = 'RESTART'
+                                          UNION
+                                          SELECT id_graph, id_state
+                                            FROM gdl_state
+                                           WHERE id_dialog IS NULL)
+-- Hilfe in NLS_ENTRY fuer id_graph_Dialog?
+ UNION
+ SELECT 'Keine Hilfe'
+      , 'INFO'
+      , mask.id_graph
+      , ' '
+      , ' '
+      , ''
+      , mask.id_dialog
+      , ''
+      , ''
+      , ''
+      , ''
+      , mask.ID_CRE
+      , mask.TS_CRE
+      , mask.ID_UPD
+      , mask.TS_UPD
+   FROM gdl_dialog mask, gdl_graph gr
+  WHERE gr.id_graph NOT IN ('ANMELDUNG', 'ONLINEHILFE', 'INFO', 'PUBLISHING')
+    AND gr.typ_graph     <> 'XX'
+    AND mask.id_graph = gr.id_graph
+    AND (mask.id_graph, mask.id_dialog) NOT IN (SELECT m.id_graph, M.id_dialog
+                                            FROM IWF.NLS_ENTRY E, gdl_dialog M, IWF.NLS_BUNDLE_NAME B
+                                           WHERE B.name          = 'com.inconso.nls.bundle.RB_Help'
+                                             AND E.nls_bundle_id = B.id
+                                             AND E.locale_id     = 'de'
+                                             AND E.key           = 'Hilfetext'
+                                             AND E.additional_id = m.id_graph ||'_'|| M.id_dialog
+                                          )
+-- Subgraph vorhanden?
+ UNION
+ SELECT 'Subgraph existiert nicht'
+      , 'ERROR'
+      , id_graph
+      , id_state
+      , event
+      , action
+      , ' '
+      , true_state
+      , true_event
+      , false_state
+      , false_event
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+   FROM gdl_state_trig
+  WHERE true_subgraph  NOT IN (SELECT id_graph FROM gdl_graph)
+     OR false_subgraph NOT IN (SELECT id_graph FROM gdl_graph)
+-- True- bzw False-Zustand ohne Dialog muss ein True- bzw False event eingetragen haben
+ UNION
+ SELECT 'Zustand ohne Dialog'
+      , 'ERROR'
+      , id_graph
+      , id_state
+      , event
+      , action
+      , ' '
+      , true_state
+      , true_event
+      , false_state
+      , false_event
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+   FROM gdl_state_trig
+  WHERE ( (id_graph, true_state)  IN (SELECT id_graph, id_state FROM gdl_state WHERE id_dialog IS NULL)
+         AND true_event IS NULL)
+     OR ( (id_graph, false_state)  IN (SELECT id_graph, id_state FROM gdl_state WHERE id_dialog IS NULL)
+         AND false_event IS NULL)
+-- Button fehlt Statetrig-Eintrag
+ UNION
+ SELECT 'Button fehlt Statetrig-Eintrag'
+      , 'ERROR'
+      , cmf.id_graph
+      , ' '
+      , cmf.id_dialog_field
+      , ''
+      , cmf.id_dialog
+      , ''
+      , ''
+      , ''
+      , ''
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+  FROM gdl_dialog_field cmf
+WHERE typ_object IN ('CEBUTTON')
+   AND id_graph NOT like '%ANMELDUNG%'
+   AND id_graph NOT like '%LOGIN%'
+   AND NOT EXISTS (SELECT 1
+                     FROM gdl_state_trig, gdl_state
+                    WHERE
+                          upper(cmf.typ_object)    = gdl_state_trig.event
+                      AND gdl_state_trig.id_graph   = gdl_state.id_graph
+                      AND gdl_state_trig.id_state = gdl_state.id_state
+                      AND gdl_state.id_graph   = cmf.id_graph
+                      AND gdl_state.id_dialog  = cmf.id_dialog
+                   )
+-- Funktionstaste fehlt Statetrig-Eintrag
+ UNION
+ SELECT 'Funktionstaste fehlt Statetrig-Eintrag'
+      , 'ERROR'
+      , cmf.id_graph
+      , ' '
+      , SUBSTR(SUBSTR(cmf.value,1,INSTR(cmf.value,':') - 1),1,40)
+      , ''
+      , cmf.id_dialog
+      , ''
+      , ''
+      , ''
+      , ''
+      , ID_CRE
+      , TS_CRE
+      , ID_UPD
+      , TS_UPD
+  FROM gdl_dialog_field cmf
+WHERE cmf.typ_object IN ('CEBUTTON')
+   AND id_graph NOT IN ('ANMELDUNG')
+   AND SUBSTR(cmf.value,1,INSTR(cmf.value,':') - 1) IN ('F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12')
+   AND NOT EXISTS (SELECT 1
+                     FROM gdl_state_trig, gdl_state
+                    WHERE
+                          SUBSTR(cmf.value,1,INSTR(cmf.value,':') - 1) = gdl_state_trig.event
+                      AND gdl_state_trig.id_graph   = gdl_state.id_graph
+                      AND gdl_state_trig.id_state = gdl_state.id_state
+                      AND gdl_state.id_graph   = cmf.id_graph
+                      AND gdl_state.id_dialog  = cmf.id_dialog
+                   )
+-- id_statewird nie genutzt im Automat
+UNION
+ SELECT 'Zustand nie im Automat'
+      , 'INFO'
+      , z.id_graph
+      , z.id_state
+      , ' '
+      , ''
+      , ' '
+      , ''
+      , ''
+      , ''
+      , ''
+      , z.ID_CRE
+      , z.TS_CRE
+      , z.ID_UPD
+      , z.TS_UPD
+  FROM gdl_state z
+  WHERE z.id_state != 'START'
+  AND NOT EXISTS (SELECT 1
+                      FROM gdl_state_trig
+                     WHERE id_graph        = z.id_graph
+                       AND (true_state = z.id_state OR  false_state = z.id_state )
+                       AND id_state    != z.id_state
+                    )
+-- Dialog hat keinen Zustand
+UNION
+-- Eine Maske vom Typ Menue muss flg_menu gesetzt haben, sonst funktioniert das Auswaehlen von Menueeintraegen nicht
+ SELECT 'Menue funktioniert nicht (flg_menu ist 0)'
+      , 'ERROR'
+      , m.id_graph
+      , ' '
+      , ' '
+      , ''
+      , m.id_dialog
+      , ''
+      , ''
+      , ''
+      , ''
+      , m.ID_CRE
+      , m.TS_CRE
+      , m.ID_UPD
+      , m.TS_UPD
+  FROM gdl_dialog m
+ WHERE m.flg_menu = '0'
+UNION
+-- Fuer Menue muss item = id_graph = event sein
+ SELECT 'Menue: Item <> id_graph'
+      , 'ERROR'
+      , m.item --m.event
+      , ' '
+      , ' '
+      , ''
+      , ' '
+      , ''
+      , ''
+      , ''
+      , ''
+      , m.ID_CRE
+      , m.TS_CRE
+      , m.ID_UPD
+      , m.TS_UPD
+  FROM gdl_menu m
+ WHERE m.item <> m.event
+UNION
+-- Fuer Masken vom Typ Menue sollen id_graph und Dialogname zwingend identisch sein
+ SELECT 'Menue: Dialog <> id_graph'
+      , 'ERROR'
+      , m.id_graph
+      , ' '
+      , ' '
+      , ''
+      , m.id_dialog
+      , ''
+      , ''
+      , ''
+      , ''
+      , m.ID_CRE
+      , m.TS_CRE
+      , m.ID_UPD
+      , m.TS_UPD
+  FROM gdl_dialog m
+ WHERE m.flg_menu = '1'
+ and m.id_graph <> m.id_dialog
+)
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

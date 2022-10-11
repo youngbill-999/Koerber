@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View REO_V_USER_TABLE</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.REO_V_USER_TABLE">
+ <META name="description" content="">
+ <META name="columns" content="TABLE_NAME">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View REO_V_USER_TABLE</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TABLE_NAME
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(128)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+CREATE OR REPLACE VIEW REO_V_USER_TABLE AS
+SELECT t.table_name as table_name
+-----------------------------------------------------------------------------
+-- Component  : IWF_REO
+-- HEAD URL   : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/00_iwf/iwf_reo/snapshot/comp/inst_components/db/dbobj/views/reo_v_user_table.vew $
+-- Revision   : $Rev: 34148 $
+-- Change at  : $Id: reo_v_user_table.vew 34148 2019-07-17 12:03:58Z TKaelbel $
+-- Change by  : $Author: TKaelbel $
+-- Copyrights : (C) inconso AG, Germany
+-- Description: View for selecting tables for reorganizsation.
+-----------------------------------------------------------------------------
+FROM  all_tables t
+WHERE t.owner = 'INWMS'
+  AND NOT exists (SELECT 1 FROM user_queues q WHERE q.queue_table = t.table_name)
+  AND t.table_name NOT LIKE 'SYS_IOT%'
+  AND t.table_name NOT LIKE 'AQ$%'
+  AND t.table_name NOT LIKE 'BIN$%'
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

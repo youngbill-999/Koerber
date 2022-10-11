@@ -1,0 +1,12 @@
+ModelProject=Model
+BasePackage=com.inconso.bend.bwmsinwmsx.pers
+PkExtension=Pk
+GenExtension=Gen
+RepositoryExtension=Rep
+JavaSrcPath=/src/main/java/
+
+DbSchema=INWMS
+
+AuditStyle=BEND
+
+CodegenComponent=!!<Name-Der-Iwf-Komponente>!!

@@ -1,0 +1,486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View PAC_V_ORDER_SUMMARY</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.PAC_V_ORDER_SUMMARY">
+ <META name="description" content="">
+ <META name="columns" content="UNIQUE_ID ID_SITE ID_CLIENT ID_ORDER NUM_PARTIAL_ORDER NUM_ITEM TYP ID_RECORD ID_LU STORAGE_AREA STORAGE_LOCATION FLG_IN_TRANSIT ID_ARTICLE TXT_LABEL QTY UNIT_STOCK">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View PAC_V_ORDER_SUMMARY</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+UNIQUE_ID
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_CLIENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ORDER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+NUM_PARTIAL_ORDER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+NUM_ITEM
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(6)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_RECORD
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STORAGE_AREA
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STORAGE_LOCATION
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(260)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FLG_IN_TRANSIT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TXT_LABEL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+QTY
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+UNIT_STOCK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+CREATE OR REPLACE VIEW PAC_V_ORDER_SUMMARY AS
+select
+       rownum as unique_id,
+       v.id_site,
+       v.id_client,
+       v.id_order,
+       v.num_partial_order,
+       v.num_item,
+       v.TYP,
+       v.id_record,
+       v.id_lu,
+       v.storage_area,
+       v.storage_location,
+       v.flg_in_transit,
+       v.id_article,
+       v.txt_label,
+       v.qty,
+       v.unit_stock
+from (
+-- FIRST: Select all LU
+SELECT
+   gi.id_site
+   , gi.id_client
+   , gi.id_order
+   , gi.num_partial_order
+   , goi.num_item
+   , 'PickingLuTyp' as TYP
+   , pr.id_record
+   , po.id_lu
+   , l.storage_area
+   , l.storage_location
+   , l.flg_in_transit
+   , a.id_article
+   , a.txt_label
+   , pr.qty
+   , a.unit_stock
+FROM
+     GI_ORDER GI
+JOIN GI_ORDER_ITEM GOI
+  ON GI.ID_ORDER = GOI.ID_ORDER
+  AND GI.ID_CLIENT = GOI.ID_CLIENT
+ AND GI.ID_SITE = GOI.ID_SITE
+JOIN BPS_PROCESS_RECORD PR
+  ON goi.id_site = pr.id_ref_1
+ and goi.id_client = pr.id_ref_2
+ and goi.id_order = pr.id_ref_3
+ and goi.num_partial_order = pr.id_ref_4
+ and goi.num_item = pr.id_ref_5
+JOIN PI_PICKING_ORDER_BPS_ASGMT POBA
+  ON PR.ID_SITE = POBA.ID_SITE
+ and pr.id_record = poba.id_record
+JOIN PI_PICKING_ORDER PO
+  ON po.id_site = poba.id_site
+ and po.id_picking_order = poba.id_picking_order
+ and po.id_lu = pr.id_lu_src
+join im_load_unit l
+  on l.id_site = po.id_site
+ and l.id_lu = po.id_lu
+join art_article a
+  on a.id_client = pr.id_client
+ and a.id_article = pr.id_article
+where poba.stat != '80'
+union
+-- SECOND: Select all Process Records Step still in Staging and not done with Packing
+select
+   gi.id_site
+   , gi.id_client
+   , gi.id_order
+   , gi.num_partial_order
+   , goi.num_item
+   , pr.typ
+   , pr.id_record
+   , l.id_lu
+   , pr.storage_area_src as storage_area
+   , pr.storage_location_src as storage_location
+   , l.flg_in_transit
+   , a.id_article
+   , a.txt_label
+   , pr.qty
+   , a.unit_stock
+from
+   gi_order gi
+JOIN GI_ORDER_ITEM GOI
+      ON (GI.ID_ORDER = GOI.ID_ORDER
+      AND GI.ID_CLIENT = GOI.ID_CLIENT
+      AND GI.ID_SITE = GOI.ID_SITE)
+JOIN BPS_PROCESS_RECORD PR
+      ON (goi.id_site = pr.id_ref_1
+      and goi.id_client = pr.id_ref_2
+      and goi.id_order = pr.id_ref_3
+      and goi.num_partial_order = pr.id_ref_4
+      and goi.num_item = pr.id_ref_5
+      and pr.typ_step = 'STAGING')
+JOIN BPS_PROCESS_STEP ps
+      on (pr.id_site = ps.id_site
+      and pr.id_record = ps.id_record)
+left join im_load_unit l
+  on l.id_site = pr.id_site
+ and l.id_lu = pr.id_lu_src
+join art_article a
+  on a.id_client = pr.id_client
+ and a.id_article = pr.id_article
+where (ps.typ_step = 'PACKING'
+   and ps.stat_step < 90.0)
+   or (select
+         count(*)
+      from
+         bps_process_step psi
+      where psi.id_site = pr.id_site
+         and psi.id_record = pr.id_record
+         and psi.typ_step = 'PACKING') = 0.0
+union
+-- THIRD: Select all finished Packages with Place and everything
+SELECT
+   gi.id_site
+   , gi.id_client
+   , gi.id_order
+   , gi.num_partial_order
+   , goi.num_item
+   , 'PaPackage' as TYP
+   , pr.id_record
+   , pr.id_lu_src as ID_LU
+   , lu.storage_area
+   , lu.storage_location
+   , lu.flg_in_transit
+   , pr.id_article
+   , a.txt_label
+   , pr.qty
+   , a.unit_stock
+FROM
+   GI_ORDER GI
+JOIN GI_ORDER_ITEM GOI
+      ON (GI.ID_ORDER = GOI.ID_ORDER
+      AND GI.ID_CLIENT = GOI.ID_CLIENT
+      AND GI.ID_SITE = GOI.ID_SITE)
+JOIN BPS_PROCESS_RECORD PR
+      ON (goi.id_site = pr.id_ref_1
+      and goi.id_client = pr.id_ref_2
+      and goi.id_order = pr.id_ref_3
+      and goi.num_partial_order = pr.id_ref_4
+      and goi.num_item = pr.id_ref_5)
+join pa_package_bps_asgmt pbs
+      on (pbs.id_site = pr.id_site
+      and pbs.id_record = pr.id_record)
+join pa_package p
+      on (pbs.id_site = p.id_site
+      and pbs.id_package = p.id_package)
+join art_article a
+      on (a.id_client = pr.id_client
+      and a.id_article = pr.id_article)
+left join im_load_unit lu
+      on (pr.id_site = lu.id_site
+      and pr.id_lu_src = lu.id_lu)
+where p.stat = 90.0) v
+order by v.id_record, v.id_lu
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

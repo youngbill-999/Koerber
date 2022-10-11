@@ -1,0 +1,581 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View SLS_V_SIL_OVERVIEW</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.SLS_V_SIL_OVERVIEW">
+ <META name="description" content="">
+ <META name="columns" content="ID_SITE ID_PK ID_LU TYP_LU HEIGHT WT_GROSS ID_STORE_IN_GROUP ID_STORE_IN_ZONE TYP_STORAGE_LOCATION FLG_SLT_ERR FLG_LSA_ERR FLG_IZ_ERR FLG_IGA_ERR FLG_IG_ERR COUNT_SL COUNT_SL_FREE COUNT_SL_FLG_SINGLE_ARTICLE COUNT_SL_FLG_FIXED_LOCATION COUNT_SL_FLG_BLOCK_CONV_TEC COUNT_SL_FLG_BLOCK_STORE_IN COUNT_SL_FLG_STOCK_TAKING COUNT_SA_FLG_BLOCK_STORE_IN COUNT_LU_HEIGHT COUNT_LU_WT_GROSS COUNT_USABLE">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View SLS_V_SIL_OVERVIEW</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_PK
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(252)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+HEIGHT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+WT_GROSS
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER(18,9)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_STORE_IN_GROUP
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_STORE_IN_ZONE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TYP_STORAGE_LOCATION
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FLG_SLT_ERR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FLG_LSA_ERR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FLG_IZ_ERR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FLG_IGA_ERR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FLG_IG_ERR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(4)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL_FREE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL_FLG_SINGLE_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL_FLG_FIXED_LOCATION
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL_FLG_BLOCK_CONV_TEC
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL_FLG_BLOCK_STORE_IN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SL_FLG_STOCK_TAKING
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_SA_FLG_BLOCK_STORE_IN
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_LU_HEIGHT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_LU_WT_GROSS
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_USABLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+create or replace view sls_v_sil_overview as
+select lu.id_site,
+-----------------------------------------------------------------------------
+-- Component  : WMS_RESERV
+-- HEAD URL   : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/10_wms/wms_slsearch/snapshot/comp/inst_components/db/dbobj/views/sls_v_sil_overview.vew $
+-- Revision   : $Rev: 35321 $
+-- Change at  : $Id: sls_v_sil_overview.vew 35321 2019-08-12 09:54:40Z sfarsad-assadi $
+-- Change by  : $Author: sfarsad-assadi $
+-- Copyrights : (C) inconso AG, Germany
+-- Description: View for SLS900
+-----------------------------------------------------------------------------
+       lu.id_site||'@'||
+       lu.id_lu||'@'||
+       ig.id_store_in_group||'@'||
+       sl.id_store_in_zone||'@'||
+       sl.typ_storage_location||'@'                                                   id_pk,
+       lu.id_lu,
+       lu.typ_lu,
+       lu.height,
+       lu.wt_gross,
+       ig.id_store_in_group,
+       sl.id_store_in_zone,
+       sl.typ_storage_location,
+       decode(slt.flg_active,'0','1','0')                                          flg_slt_err, -- P Platz
+       decode(slt.flg_lu_typ_sl_typ,'1',decode(lsa.flg_active,'1','0','1'),'0')    flg_lsa_err, -- T Typ
+       decode(iz.flg_active, '0','1','0')                                          flg_iz_err,  -- Z Zone
+       decode(iga.flg_active,'0','1','0')                                          flg_iga_err, -- A Allokation
+       decode(ig.flg_active, '0','1','0')                                          flg_ig_err,  -- G Gruppe
+       count(sl.storage_area||'@'||sl.storage_location)                            count_sl,
+       sum(decode(sl.stat_occupied,'00',1,0))                                      count_sl_free,
+       sum(decode(sl.stat_occupied,'00',decode(sl.flg_single_article,'1',1,0),0))  count_sl_flg_single_article,
+       sum(decode(sl.stat_occupied,'00',decode(sl.flg_fixed_location,'1',1,0),0))  count_sl_flg_fixed_location,
+       sum(decode(sl.stat_occupied,'00',decode(sl.flg_block_conv_tec,'1',1,0),0))  count_sl_flg_block_conv_tec,
+       sum(decode(sl.stat_occupied,'00',decode(sl.flg_block_store_in,'1',1,0),0))  count_sl_flg_block_store_in,
+       sum(decode(sl.stat_occupied,'00',decode(sl.flg_stock_taking,  '1',1,0),0))  count_sl_flg_stock_taking,
+       sum(decode(sl.stat_occupied,'00',decode(sa.flg_block_store_in,'1',1,0),0))  count_sa_flg_block_store_in,
+       -- freie Plaetze, Hoehe unzureichend
+       sum(decode(sl.stat_occupied,'00',(case when lu.height > sl.height
+                                              then 1
+                                              else 0 end),0))                      count_lu_height,
+       -- freie Plaetze, Gewicht unzureichend
+       sum(decode(sl.stat_occupied,'00',(case when lu.wt_gross > coalesce(sl.wt_residual,sl.wt_max,999999999)
+                                              then 1
+                                              else 0 end),0))                      count_lu_wt_gross,
+       sum(case when     sl.stat_occupied           = '00'
+                     and sl.flg_block_conv_tec      = '0'
+                     and sl.flg_block_store_in      = '0'
+                     and sl.flg_stock_taking        = '0'
+                     and (   sa.flg_block_store_in is null
+                          or sa.flg_block_store_in  = '0'
+                         )
+                     and coalesce(lu.height,0)     <= sl.height
+                     and coalesce(lu.wt_gross,0)   <= coalesce(sl.wt_residual,sl.wt_max,999999999)
+                then 1
+                else 0
+           end)                                                                    count_usable
+  from im_load_unit lu,
+       top_storage_location sl,
+       top_storage_aisle sa,
+       top_storage_location_type slt,
+       om_lut_slt_asgmt lsa,
+       top_store_in_zone iz,
+       top_store_in_zn_grp_asgmt iga,
+       top_store_in_group ig
+ where sl.id_site                  = lu.id_site
+   and sa.id_site(+)               = sl.id_site
+   and sa.aisle(+)                 = sl.aisle
+   and slt.id_site                 = sl.id_site
+   and slt.typ_storage_location    = sl.typ_storage_location
+   and lsa.id_site(+)              = lu.id_site
+   and lsa.typ_lu(+)               = lu.typ_lu
+   and lsa.typ_storage_location(+) = slt.typ_storage_location
+   and iz.id_site(+)               = sl.id_site
+   and iz.id_store_in_zone(+)      = sl.id_store_in_zone
+   and iga.id_site(+)              = iz.id_site
+   and iga.id_store_in_zone(+)     = iz.id_store_in_zone
+   and ig.id_site(+)               = iga.id_site
+   and ig.id_store_in_group(+)     = iga.id_store_in_group
+ group by lu.id_site,
+          lu.id_lu,
+          lu.typ_lu,
+          lu.height,
+          lu.wt_gross,
+          ig.id_store_in_group,
+          sl.id_store_in_zone,
+          sl.typ_storage_location,
+          slt.flg_active,
+          slt.flg_lu_typ_sl_typ,
+          lsa.flg_active,
+          iz.flg_active,
+          iga.flg_active,
+          ig.flg_active
+ order by lu.id_site,
+          lu.id_lu,
+          ig.id_store_in_group,
+          sl.id_store_in_zone,
+          sl.typ_storage_location
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

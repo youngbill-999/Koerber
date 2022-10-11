@@ -1,0 +1,703 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View V_DDL_EXPORT</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.V_DDL_EXPORT">
+ <META name="description" content="">
+ <META name="columns" content="SUB_DIR FILE_NAME DDL ORDER_NUMBER OBJECT_OWNER OBJECT_NAME OBJECT_TYPE">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View V_DDL_EXPORT</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SUB_DIR
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(560)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+FILE_NAME
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(132)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+DDL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+CLOB
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ORDER_NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+OBJECT_OWNER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(512)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+OBJECT_NAME
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(128)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+OBJECT_TYPE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(92)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+CREATE OR REPLACE VIEW V_DDL_EXPORT AS
+with
+     -----------------------------------------------------------------------------
+     -- Komponente     : INWMS_BASIS
+     -- HEAD URL       : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/00_iwf/iwf_projbase/snapshot/comp/inst_components/db/dbobj/views/v_ddl_export.vew $
+     -- Revision       : $Rev: 27187 $
+     -- Aenderung am   : $Id: v_ddl_export.vew 27187 2019-03-25 16:44:26Z dhochstrasser $
+     -- Aenderung durch: $Author: dhochstrasser $
+     -- Copyrights     : (C) inconso AG, Germany
+     -- Beschreibung   :
+     -----------------------------------------------------------------------------
+     -- Sequences
+     tmp_sequences as (select * from user_sequences),
+     -- Constraints
+     tmp_constraints as (select * from user_constraints),
+     -- Queue tables
+     tmp_queue_tables as (select * from user_queue_tables),
+     -- All objects (except synonyms)
+     tmp_objects as (select *
+                       from user_objects
+                      where object_type       <> 'SYNONYM'
+                        and object_name not like 'AQ$_%'
+                        and object_name not like 'SYS_%'
+                        and object_name not like 'BIN_%'),
+     -- Object Grants on all database objects belonging to user (incl. grant stmt)
+     tmp_grants as (select utp.owner,
+                           utp.table_name,
+                           utp.grantee,
+                              chr(10)
+                           || 'grant '
+                           || listagg(utp.privilege, ', ') within group (order by privilege)
+                           || ' on '
+                           || '"'
+                           || utp.owner
+                           || '"."'
+                           || utp.table_name
+                           || '" to "'
+                           || utp.grantee
+                           || '";' as grant_sql
+                      from user_tab_privs utp
+                     where utp.owner = user
+                     group by utp.owner,
+                              utp.table_name,
+                              utp.grantee),
+     -- Synonyms owned by user or those pointing to user's objects (including the SQL
+     -- to propagate grants on the 'synonymized' object to the owner of the synonym)
+     tmp_synonyms as (select asy.owner,
+                             asy.synonym_name,
+                             asy.table_owner,
+                             grn.grant_sql
+                        from all_synonyms asy,
+                             tmp_grants   grn
+                       where (    asy.owner       = user
+                               or asy.table_owner = user)
+                         and grn.owner        (+) = asy.table_owner
+                         and grn.table_name   (+) = asy.table_name
+                         and grn.grantee      (+) = asy.owner)
+     ---------------------
+     -- The actual SELECT
+     ---------------------
+     select sub_dir,
+            file_name,
+            regexp_replace(-- Remove OWNER clause
+               regexp_replace(-- kill whitespace before lines containing only '/'
+                  regexp_replace(-- final semicolon terminates last line
+                     regexp_replace(-- final slash on a line of its own
+                        regexp_replace(-- trim file's trailing whitespace on each line
+                           regexp_replace(-- trim file's leading whitespace
+                           ddl,
+                           '^\s+',
+                           ''),
+                        '[[:blank:]' || chr(9) || ']+$',
+                        '',
+                        1,
+                        0,
+                        'm'),
+                     '\s+/$',
+                     chr(10) || '/'),
+                  '\s+;$',
+                  ';'),
+               '\s+' || chr(10) || '/' || chr(10),
+               chr(10) || '/' || chr(10))
+               || comment_ddl,
+                  '"'
+               || user
+               || '"\.',
+               '',
+               1,
+               0,
+               'i') as ddl,
+            order_number,
+            object_owner,
+            object_name,
+            object_type
+       from (select sub_dir,
+                    file_name,
+                    case object_type
+                       when 'AQ_QUEUE_TABLE'
+                       then
+                       -- Remove OWNER clause and add trailing slash
+                             regexp_replace(
+                                dbms_metadata.get_ddl(
+                                   object_type,
+                                   object_name,
+                                   version => '11.2.0'),
+                                'Queue_payload_type => ''' || user || '\.',
+                                'Queue_payload_type => ''',
+                                1,
+                                0,
+                                'i')
+                          || chr(10)
+                          || '/'
+                       when 'AQ_QUEUE'
+                       then
+                       -- Add trailing slash
+                             dbms_metadata.get_ddl(
+                                object_type,
+                                object_name,
+                                version => '11.2.0')
+                          || chr(10)
+                          || '/'
+                       when 'SEQUENCE'
+                       then
+                       -- Replace START WITH with MIN_VALUE / MAX_VALUE
+                          regexp_replace(
+                             dbms_metadata.get_ddl(
+                                object_type,
+                                object_name,
+                                version => '11.2.0'),
+                             '\s+start\s+with\s+\d+',
+                                ' START WITH '
+                             || (select case when tmp_s.increment_by >= 0
+                                             then
+                                                to_char(tmp_s.min_value)
+                                             else
+                                                to_char(tmp_s.max_value)
+                                             end
+                                   from tmp_sequences tmp_s
+                                  where tmp_s.sequence_name = object_name),
+                             1,
+                             0,
+                             'i')
+                       when 'TABLE'
+                       then
+                       -- Filter SEGMENT CREATION IMMEDIATE
+                          regexp_replace(
+                             dbms_metadata.get_ddl(
+                                object_type,
+                                object_name,
+                                version => '11.2.0'),
+                             '\s+segment\s+creation\s+immediate',
+                             '',
+                             1,
+                             0,
+                             'i')
+                       when 'SYNONYM'
+                       then
+                       -- synonyms point to user's object but belong to another
+                       -- user, thus an additional parameter is required
+                       -- if there are any grants on the 'synonymized' object to
+                       -- the grantee of the synonym, we want that sql as well
+                             dbms_metadata.get_ddl(
+                                object_type,
+                                object_name,
+                                object_owner,
+                                version => '11.2.0')
+                          || grant_sql
+                       when 'JAVA SOURCE'
+                       then
+                       -- dbms_metadata doesn't export java sources nicely,
+                       -- BER came up with a wrapper function around the
+                       -- procedure dbms_java.export_source
+                          get_java_src(
+                             object_name,
+                             object_owner)
+                       else
+                          dbms_metadata.get_ddl(
+                             object_type,
+                             object_name,
+                             version => '11.2.0')
+                    end as ddl,
+                    -- Comments
+                    case dependent
+                       when 1
+                       then
+                          dbms_metadata.get_dependent_ddl(
+                             'COMMENT',
+                             object_name,
+                             user,
+                             version => '11.2.0')
+                    end         as comment_ddl,
+                    order_number,
+                    object_owner,
+                    object_name,
+                    object_type
+                      -- Directories
+                from (select 'directories'    as sub_dir,
+                                lower(
+                                   d.directory_name)
+                             || '.sql'        as file_name,
+                             'DIRECTORY'      as object_type,
+                             d.directory_name as object_name,
+                             d.owner          as object_owner,
+                             to_char(null)    as grant_sql,
+                             0                as dependent,
+                             5                as order_number
+                       from all_directories d
+                      -- Tables
+                      union all
+                      select 'tables'      as sub_dir,
+                                lower(
+                                ut.table_name)
+                             || '.sql'     as file_name,
+                             'TABLE'       as object_type,
+                             ut.table_name as object_name,
+                             user          as object_owner,
+                             to_char(null) as grant_sql,
+                             case
+                                when exists (select 1
+                                               from user_tab_comments utc
+                                              where utc.table_name = ut.table_name
+                                                and utc.table_type = 'TABLE'
+                                                and utc.comments  is not null)
+                                then
+                                   1
+                                when exists (select 1
+                                               from user_col_comments ucc
+                                              where ucc.table_name = ut.table_name
+                                                and ucc.comments  is not null)
+                                then
+                                   1
+                                else
+                                   0
+                             end           as dependent,
+                             10            as order_number
+                        from user_tables      ut,
+                             tmp_queue_tables tmp_qt
+                       where ut.table_name not like ('SYS_IOT%') -- Exclude system tables
+                         and ut.table_name not like ('AQ$_%') -- Exclude system aq-tables
+                            -- These are treated separately
+                            --and not exists (select 1 from user_queue_tables uqt where uqt.queue_table = ut.table_name)
+                         and ut.table_name = tmp_qt.queue_table(+)
+                         and tmp_qt.queue_table is null
+                      -- Indexes (Without correlating constraint)
+                      union all
+                      select 'indexes'     as sub_dir,
+                                lower(
+                                   u.index_name)
+                             || '.sql'     as file_name,
+                             'INDEX'       as object_type,
+                             u.index_name  as object_name,
+                             user          as object_owner,
+                             to_char(null) as grant_sql,
+                             0             as dependent,
+                             15            as order_number
+                        from user_indexes    u,
+                             tmp_constraints tmp_c
+                       where u.index_type     <> 'LOB'
+                            -- Constraint already created?
+                            --and not exists (select 1 from user_constraints uc where uc.index_name = u.index_name)
+                         and u.index_name      = tmp_c.index_name(+)
+                         and tmp_c.index_name is null
+                      -- Constraints
+                      union all
+                      select 'constraints'         as sub_dir,
+                                lower(
+                                   tmp_c.constraint_name)
+                             || '.sql'             as file_name,
+                             decode(
+                                tmp_c.constraint_type, 'R', 'REF_CONSTRAINT',
+                                                            'CONSTRAINT')
+                                                   as object_type,
+                             tmp_c.constraint_name as object_name,
+                             user                  as object_owner,
+                             to_char(null)         as grant_sql,
+                             0                     as dependent,
+                             20                    as order_number
+                        from tmp_constraints tmp_c
+                       where tmp_c.constraint_type = 'R'
+                         and tmp_c.constraint_name not like 'SYS_%'
+                         and tmp_c.constraint_name not like 'BIN$_%'
+                      -- MViews
+                      union all
+                      select 'mviews'            as sub_dir,
+                                lower(um.mview_name)
+                             || '.sql'           as file_name,
+                             'MATERIALIZED_VIEW' as object_type,
+                             um.mview_name       as object_name,
+                             user                as object_owner,
+                             to_char(null)       as grant_sql,
+                             case
+                                when exists (select 1
+                                        from user_mview_comments umc
+                                       where umc.mview_name = um.mview_name
+                                         and umc.comments is not null)
+                                then
+                                   1
+                                else
+                                   0
+                             end as dependent,
+                             25 as order_number
+                        from user_mviews um
+                      -- MView Logs
+                      union all
+                      select 'mview_logs'            as sub_dir,
+                                lower(uml.master)
+                             || '.sql'               as file_name,
+                             'MATERIALIZED_VIEW_LOG' as object_type,
+                             uml.log_table           as object_name,
+                             user                    as object_owner,
+                             to_char(null)           as grant_sql,
+                             0                       as dependent,
+                             30                      as order_number
+                        from user_mview_logs uml
+                      -- Sequences
+                      union all
+                      select 'sequences'         as sub_dir,
+                                lower(
+                                   tmp_s.sequence_name)
+                             || '.sql'           as file_name,
+                             'SEQUENCE'          as object_type,
+                             tmp_s.sequence_name as object_name,
+                             user                as object_owner,
+                             to_char(null)       as grant_sql,
+                             0                   as dependent,
+                             35                  as order_number
+                        from tmp_sequences tmp_s
+                      -- Types
+                      union all
+                      select 'types'           as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.sql'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             40                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'TYPE'
+                      -- Views
+                      union all
+                      select 'views'           as sub_dir,
+                             lower(
+                                tmp_o.object_name)
+                             || '.vew'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             case
+                                when exists (select 1
+                                               from user_tab_comments utc
+                                              where utc.table_name = tmp_o.object_name
+                                                and utc.table_type = 'VIEW'
+                                                and utc.comments  is not null)
+                                then
+                                   1
+                                when exists (select 1
+                                               from user_col_comments ucc
+                                              where ucc.table_name = tmp_o.object_name
+                                                and ucc.comments  is not null)
+                                then
+                                   1
+                                else
+                                   0
+                             end               as dependent,
+                             45                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'VIEW'
+                      -- Advanced queuing tables
+                      union all
+                      select 'queue_tables'   as sub_dir,
+                                lower(
+                                   tqt.queue_table)
+                             || '.sql'        as file_name,
+                             'AQ_QUEUE_TABLE' as object_type,
+                             tqt.queue_table  as object_name,
+                             user             as object_owner,
+                             to_char(null)    as grant_sql,
+                             0                as dependent,
+                             50               as order_number
+                        from tmp_queue_tables tqt
+                      -- Advanced queuing queues
+                      union all
+                      select 'queues'          as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.sql'         as file_name,
+                             'AQ_QUEUE'        as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             55                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'QUEUE'
+                      -- Functions
+                      union all
+                      select 'functions'       as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.fnc'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             60                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'FUNCTION'
+                      -- Procedures
+                      union all
+                      select 'procedures'      as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.prc'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             65                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'PROCEDURE'
+                      -- Packages (Header)
+                      union all
+                      select    'packages/'
+                             || lower(
+                                   tmp_o.object_name) as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.spc'                as file_name,
+                             'PACKAGE_SPEC'           as object_type,
+                             tmp_o.object_name        as object_name,
+                             user                     as object_owner,
+                             to_char(null)            as grant_sql,
+                             0                        as dependent,
+                             70                       as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'PACKAGE'
+                         and tmp_o.object_name not like 'ZZ\_%' escape '\'
+                      -- Packages (Bodies)
+                      union all
+                      select    'packages/'
+                             || lower(
+                                   tmp_o.object_name) as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.bdy'                as file_name,
+                             'PACKAGE_BODY'           as object_type,
+                             tmp_o.object_name        as object_name,
+                             user                     as object_owner,
+                             to_char(null)            as grant_sql,
+                             0                        as dependent,
+                             75                       as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'PACKAGE BODY'
+                         and tmp_o.object_name not like 'ZZ\_%' escape '\'
+                      -- Triggers
+                      union all
+                      select 'triggers'        as sub_dir,
+                                lower(tmp_o.object_name)
+                             || '.trg'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             80                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'TRIGGER'
+                      -- Synonyms
+                      union all
+                      -- User's synonyms go to the upper directory
+                      -- Synonyms to user's object go to a subdirectory depending on
+                      -- the target user/schema
+                      select    'synonyms'
+                             || decode(
+                                   tmp_s.owner, user, to_char(null),
+                                                         '/to_'
+                                                      || lower(
+                                                            tmp_s.owner))
+                                                as sub_dir,
+                                lower(tmp_s.synonym_name)
+                             || '.sql'          as file_name,
+                             'SYNONYM'          as object_type,
+                             tmp_s.synonym_name as object_name,
+                             tmp_s.owner        as object_owner,
+                             tmp_s.grant_sql    as grant_sql,
+                             0                  as dependent,
+                             85                 as order_number
+                        from tmp_synonyms tmp_s
+                      -- Libraries
+                      union all
+                      select 'libraries'       as sub_dir,
+                                lower(
+                                   tmp_o.object_name)
+                             || '.sql'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             90                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'LIBRARY'
+                      -- Java Sources
+                      union all
+                      select 'java'      as sub_dir,
+                                tmp_o.object_name
+                             || '.sql'         as file_name,
+                             tmp_o.object_type as object_type,
+                             tmp_o.object_name as object_name,
+                             user              as object_owner,
+                             to_char(null)     as grant_sql,
+                             0                 as dependent,
+                             99                as order_number
+                        from tmp_objects tmp_o
+                       where tmp_o.object_type = 'JAVA SOURCE'
+                      ))
+      order by order_number,
+               sub_dir,
+               file_name
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

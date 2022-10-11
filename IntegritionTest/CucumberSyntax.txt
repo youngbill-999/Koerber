@@ -1,0 +1,108 @@
+Feature, Scenario, Rule
+一般情况下rule只是用来给feature分组的，不具备什么实际语法效力
+
+基本remark
+given:一般是给出一个测试场景的初始化操作
+when一般是给出输入，
+then一般是给出输出
+
+and和but作为替代来批处理一些连续的值
+如果一个场景中有多个连续的基本的remark的话，那么可以使用and和but来将他们联立起来
+一般来说but要引出的是与期望值相反的值
+
+
+backgrund：
+如果有多个scenarios，其中有些步骤是相同的，然后就可以把他们抽取出来单独配置好
+
+
+ | feature          | "功能"       |  
+ | background       | "背景"       |  
+ | scenario         | "场景"       |  
+ | scenario_outline | "场景大纲"    |  
+ | examples         | "例子"       |  
+
+ | given            | "* ", "假如" |  
+ | when             | "* ", "当"   |  
+ | then             | "* ", "那么" |  
+ | and              | "* ", "而且" |  
+ | but              | "* ", "但是" | 
+ 
+ | given (code)     | "假如"       |  
+ | when (code)      | "当"         |  
+ | then (code)      | "那么"       |  
+ | and (code)       | "而且"       |  
+ | but (code)       | "但是"       | 
+
+Cucumber传参数：
+glue code    feature
+{int}        1/2/3/4
+{float}      1.1/4.4
+{word}       在feature中没有加引号的字符串，但是他只能提取不含括号的一段
+{string}     字符串
+{}           任意值
+
+自定义参数：
+使用新建类来作为参数
+
+复杂参数
+List，Map等等
+如果是table类型的话，最好的方式就是使用List<Map<String,String>>这种来定义
+https://cucumber.io/docs/cucumber/api/?lang=java
+
+table类型自定义转换
+将table的内容转换成自定义的类，然后获取使用
+
+
+
+table比较复杂且容易出错
+在实际操作中，利用json格式来传递数据是一种比较好的方式
+
+e.g.
+feature:
+这里是使用字符串来表示json数据
+"""json
+{
+    "firstName": "A",
+    "lastName": "B",
+}
+"""
+
+glue code中利用第三方的工具来转换
+
+数据驱动
+使用example加上scenario outline（注意多个测试用例的时候这里只能用outline）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

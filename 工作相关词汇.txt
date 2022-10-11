@@ -18,7 +18,8 @@ Staging areas
 staging area货物中转区
 high bay warehouse 高架仓库
 overstock积压
-
+Dispose弃置
+inspection检查
 
 BBD best before date
 

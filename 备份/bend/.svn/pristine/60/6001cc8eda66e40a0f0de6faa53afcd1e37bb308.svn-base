@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>View SLS_V_SIL_OVERVIEW_ADD</TITLE>
+ <META name="object" content="VIEW">
+ <META name="name" content="10.9.92.109:1521/INCOMPD INWMS.SLS_V_SIL_OVERVIEW_ADD">
+ <META name="description" content="">
+ <META name="columns" content="ID_SITE ID_LU STAT_OCCUPIED CL_LU COUNT_QUANTUM COUNT_ARTICLE ID_CLIENT ID_ARTICLE TXT_LABEL SITE_REQUIREMENT1 SITE_REQUIREMENT2 SITE_REQUIREMENT3">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>INWMS@10.9.92.109:1521/INCOMPD</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">View SLS_V_SIL_OVERVIEW_ADD</P>
+
+</TD></TR></TABLE>
+<HR>
+<A NAME="Columns"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Columns
+</TD></TR></TABLE>
+<TABLE CLASS="SIMPLE_TABLE">
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Name
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Type
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Optional
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Default
+</U>
+</TD>
+<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
+Comments
+</U>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_SITE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(80)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+STAT_OCCUPIED
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(8)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+CL_LU
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(12)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_QUANTUM
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+COUNT_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+NUMBER
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_CLIENT
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(48)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+ID_ARTICLE
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+TXT_LABEL
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(160)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SITE_REQUIREMENT1
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SITE_REQUIREMENT2
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+<TR>
+<TD VALIGN="TOP" CLASS="LIST_ITEM">
+SITE_REQUIREMENT3
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+VARCHAR2(24)
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+Y
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+<TD VALIGN="TOP" CLASS="DESC_TEXT">
+&nbsp;
+</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="SQL"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+SQL
+</TD></TR></TABLE><PRE CLASS="DECL_TEXT">
+create or replace view sls_v_sil_overview_add as
+select id_site,
+-----------------------------------------------------------------------------
+-- Component  : WMS_RESERV
+-- HEAD URL   : $URL: svn://ifbsrc1/Bend2.0/IWFComponent/releases/10_wms/wms_slsearch/snapshot/comp/inst_components/db/dbobj/views/sls_v_sil_overview_add.vew $
+-- Revision   : $Rev: 34920 $
+-- Change at  : $Id: sls_v_sil_overview_add.vew 34920 2019-08-01 15:07:03Z sfarsad-assadi $
+-- Change by  : $Author: sfarsad-assadi $
+-- Copyrights : (C) inconso AG, Germany
+-- Description: View for SLS910
+-----------------------------------------------------------------------------
+       id_lu,
+       stat_occupied,
+       cl_lu,
+       count_quantum,
+       decode(count_quantum,0,0,count_article)        count_article,
+       decode(count_article,1,id_client,null)         id_client,
+       decode(count_article,1,id_article,null)        id_article,
+       decode(count_article,1,txt_label,null)         txt_label,
+       decode(count_article,1,site_requirement1,null) site_requirement1,
+       decode(count_article,1,site_requirement2,null) site_requirement2,
+       decode(count_article,1,site_requirement3,null) site_requirement3
+from
+(
+select id_site,
+       id_lu,
+       stat_occupied,
+       cl_lu,
+       count(distinct id_quantum)                     count_quantum,
+       count(distinct id_client||'@'||id_article)     count_article,
+       min(id_client)                                 id_client,
+       min(id_article)                                id_article,
+       min(txt_label)                                 txt_label,
+       min(site_requirement1)                         site_requirement1,
+       min(site_requirement2)                         site_requirement2,
+       min(site_requirement3)                         site_requirement3
+from
+(
+select lu.id_site,
+       lu.id_lu,
+       lu.stat_occupied,
+       lt.cl_lu,
+       null                                           id_quantum,
+       null                                           id_client,
+       null                                           id_article,
+       null                                           txt_label,
+       null                                           site_requirement1,
+       null                                           site_requirement2,
+       null                                           site_requirement3
+  from im_load_unit lu,
+       top_lu_type lt
+ where not exists (select 1
+                     from im_quantum qu
+                    where qu.id_site = lu.id_site
+                      and (   qu.id_lu_1 = lu.id_lu
+                           or qu.id_lu_2 = lu.id_lu
+                           or qu.id_lu_3 = lu.id_lu))
+   and lt.id_site = lu.id_site
+   and lt.typ_lu  = lu.typ_lu
+union
+select lu.id_site,
+       lu.id_lu,
+       lu.stat_occupied,
+       lt.cl_lu,
+       qu.id_quantum,
+       qu.id_client,
+       qu.id_article,
+       art.txt_label,
+       ass.site_requirement1,
+       ass.site_requirement2,
+       ass.site_requirement3
+  from im_load_unit lu,
+       top_lu_type lt,
+       im_quantum qu,
+       art_article art,
+       art_art_site_specific ass
+ where qu.id_site     = lu.id_site
+   and (   qu.id_lu_1 = lu.id_lu
+        or qu.id_lu_2 = lu.id_lu
+        or qu.id_lu_3 = lu.id_lu)
+   and lt.id_site     = lu.id_site
+   and lt.typ_lu      = lu.typ_lu
+   and art.id_client  = qu.id_client
+   and art.id_article = qu.id_article
+   and ass.id_site    = qu.id_site
+   and ass.id_client  = qu.id_client
+   and ass.id_article = qu.id_article
+)
+ group by id_site,
+          id_lu,
+          stat_occupied,
+          cl_lu
+)
+;
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>
