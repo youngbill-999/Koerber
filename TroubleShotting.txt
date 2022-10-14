@@ -48,3 +48,43 @@ C-inconso-scrirpt-map click once when vpn unavail
 
 
 在chasc中，有一些商品比如PK1用户的商品是要求输入SAPP的，这些config的要求在WB210中能够看到
+
+关于Task3中有关gr data的测试用例中不符合user story的问题
+在https://confluence.inconso.de/display/LEXPDINWMSXBEND/IM+022+-+Umgang+mit+WE-Daten
+有相关的描述：
+
+在两个quantum融合时如何处理非隔离的属性的问题：
+对于非隔离属性（GR receipt, item, date）
+当两个quant的GR data不一致的或者至少一有个的GR为空时，新生成的quant的GR为空，这保证了quant的信息正确性
+但是这一过程有一个大前提wenn striktes FIFO eingehalten werden muss
+
+Dieses Vorgehen stellt sicher, dass im Quant keine unkorrekten Informationen stehen.
+Allerdings ist dieses Vorgehen insbesondere dann, wenn striktes FIFO eingehalten werden muss, unglücklich.
+Das Vorgehen für die WE-Daten soll konfigurierbar werden.
+Beschreibung
+Über eine Property kann das gewünschte Vorgehen eingestellt werden.
+Variante 1 - das heute realisierte Vorgehen
+Variante 2 - der schlechtere Wert wird genommen, d. h. 
+Die Entscheidung hängt vom WE-Datum ab.
+Bei gleichem WE-Datum werden die WE-Daten des kleineren WEs bzw. der kleineren WE-Position genommen (setzt voraus, dass die IDs der WEs und die Nummern der WE-Positionen aufsteigend vergeben werden).
+Bei unterschiedlichem WE-Datum werden die WE-Daten (auch WE und WE-Position) des Quants mit dem schlechterem WE-Datum genommen.
+Falls ein Quant kein WE-Datum aufweist, werden alle WE-Daten aus dem anderen Quant genommen.
+
+
+IMloadunithandler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

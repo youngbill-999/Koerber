@@ -4,7 +4,7 @@ Implementation-Title: ApplicationBwmsInwmsX
 Implementation-Version: 4.10.0-SNAPSHOT
 Implementation-Vendor: Körber Supply Chain Software GmbH
 Build-ID: local Build
-Build-Time: 2022-10-07 07:21
+Build-Time: 2022-10-12 07:33
 Created-By: Maven Integration for Eclipse
 Hostname: 
 SCM-Revision: 

@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="31.518">
-    <testcase classname="IM.013-002: inventory/transaction/chasc - Inventory CHASC check melting" name="IM.013-002-0001:On a location are 2 quanta A and B with the same attributes - they only differ in their artvar." time="1.245">
-        <system-out><![CDATA[Given set global: idSite = "RL1", idClient = "RK2"..........................passed
-Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 100 pieces of article "WT-XP3" has to be created.passed
-And the target location is "A01-EMPTY"-"A-001"..............................passed
-And the artvar is "1" and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00".passed
-And CREQU is called.........................................................passed
-And CREQU was successful, saved as "Qu1"; transaction saved as "Transaction1".passed
-Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 100 pieces of article "WT-XP3" has to be created.passed
-And the target location is "A01-EMPTY"-"A-001"..............................passed
-And the artvar is "2" and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00".passed
-And CREQU is called.........................................................passed
-And CREQU was successful, saved as "Qu2"; transaction saved as "Transaction2".passed
-When CHASC is used to change quantum ="Qu1" with artvar = "2"  and qtyMoved = 50.00.passed
-And CHASC is called.........................................................passed
-And CHASC was successful; transaction saved as "CHASC-Transaction"..........passed
-Then transaction "CHASC-Transaction" has: typTransaction = "CHASC"..........passed
-And quantum "Qu1" has decreased by 50.00 and quantum "Qu2" has increased by 50.00.passed
-And quantum "Qu2" has artvar = "2"..........................................passed
-Then delete quantum "Qu1"...................................................passed
-And delete quantum "Qu2"....................................................passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="27.918">
+    <testcase classname="IM.021-001: inventory/printPidLbl - Prints the label configured for DIALOG/IM_PID_LBL/LU_Type" name="IM.021-001-001: Create a test Load Unit to Print" time="0.696">
+        <system-out><![CDATA[Given set global: idSite = "RL1", idClient = "RK1"..........................passed
+Given a load unit from storage location "QUELLE-LAG"-"Q-001" to storage location "H01-KLAER"-"K-101" has to be created.passed
+And the load unit type is "EURO"............................................passed
+When CRELU is called........................................................passed
+Then CRELU was successful, saved as "Lu"; transaction saved as "Transaction".passed
+When PRINT_PID_LBL is used to print PID label for Load Unit "Lu" with document IM_PID_LBL.passed
 ]]></system-out>
     </testcase>
 </testsuite>

@@ -320,7 +320,7 @@ public class InventoryWebserviceCaller {
   }
 
   // BeiYu_Task2_Printing
-  @When("the Load Unit {string} exist, print its label with configuration IM_PID_LBL")
+  @When("PRINT_PID_LBL is used to print PID label for Load Unit {string} with document IM_PID_LBL")
   @Transactional(readOnly = true)
   public void printTestLu(String lu) {
     ImLoadUnit loadUnit = inventoryDataHandler.getLoadUnit(lu);
@@ -330,7 +330,6 @@ public class InventoryWebserviceCaller {
     inputService.setContext("SITE", generalHelper.getIdSite());
 
     InventoryPrintLblInput inputWebService = new InventoryPrintLblInput();
-
     inputWebService.setIdSite(generalHelper.getIdSite());
     inputWebService.setTypLU(loadUnit.getTypLu());
     inputWebService.setIdTerminal("IPC7301");
@@ -340,11 +339,6 @@ public class InventoryWebserviceCaller {
     webserviceClient.call(InventoryDesc.SERVICE, InventoryDesc.PRINT_PID_LBL, inputService);
     webserviceClient.verifySuccess();
 
-  }
-
-  @Given("here is a test")
-  public void test() {
-    System.out.println("hahahahhahahaha2");
   }
 
 }

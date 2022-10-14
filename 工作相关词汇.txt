@@ -20,6 +20,10 @@ high bay warehouse 高架仓库
 overstock积压
 Dispose弃置
 inspection检查
+I have a lot to digest.我有很多东西需要消化
+Replenishment补货
+Mindesthaltbarkeitsdatum (MHD)
+conveyor 输送机
 
 BBD best before date
 

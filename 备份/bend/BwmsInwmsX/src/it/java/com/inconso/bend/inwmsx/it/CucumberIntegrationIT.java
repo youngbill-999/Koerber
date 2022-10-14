@@ -15,10 +15,13 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     //tags = "@defaultdatabased and @grbase",
-    //tags = "@inventory and @chaqa and @defaultdatabased",
-    tags = "@inventory and @chasc and @Melting and @defaultdatabased",
-    //tags = "@inventory and @chasc and @input and @defaultdatabased",
-    //tags = "@inventory and @crequ and @defaultdatabased",
+    
+ 
+    //tags = "@inventory and @chasc and @defaultdatabased",
+
+    //tags = "@inventory and @chasc and @TEST and @defaultdatabased",
+  
+    tags = "@inventory and @LABEL_PRINT and @defaultdatabased",
     features = { "src/it/resources"},
     monochrome = true,
     snippets = SnippetType.CAMELCASE, 

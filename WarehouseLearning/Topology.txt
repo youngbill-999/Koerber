@@ -1,0 +1,7 @@
+Warehouse:
+存在多个Warehouse Areas：
+比如：
+1.按货架类型有： bulk， high bay，shelf
+2.按功能：picking zone， replenishment area
+3.技术特点： flow rack（流动货架）、、、
+4.逻辑特性：源 和 目标（TOP200 type中有相关的type显示）

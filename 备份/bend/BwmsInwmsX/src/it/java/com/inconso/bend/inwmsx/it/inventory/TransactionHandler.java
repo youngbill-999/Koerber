@@ -2,6 +2,7 @@ package com.inconso.bend.inwmsx.it.inventory;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import com.inconso.bend.inventory.pers.gen.ImQuantumPk;
 import com.inconso.bend.inventory.pers.model.ImQuantum;
 import com.inconso.bend.inventory.pers.model.ImTransaction;
 import com.inconso.bend.inwmsx.it.general.CucumberReport;
@@ -837,6 +839,19 @@ public class TransactionHandler {
     //@formatter:on
   }
 
+  @Then("transaction {string} has: idGoodsReceiptTgt without GRData")
+  @Transactional(readOnly = true)
+  public void verifyTgtQuantumWithoutGRData(String keyTransaction) {
+    ImTransaction transaction = inventoryDataHandler.getTransaction(keyTransaction);
+    cucumberReport.setMessage("Transaction: " + transaction.getImTransactionPk());
+    //@formatter:off
+    assertAll(
+        () -> assertNotNull(transaction, "no transaction created"), 
+        () -> assertEquals( null,transaction.getIdGoodsReceiptTgt())
+        );
+    //@formatter:on
+  }
+
   /**
    * Verifies that the transaction has given source date of goods receipt
    * 
@@ -1263,6 +1278,29 @@ public class TransactionHandler {
     assertAll(() -> assertNotNull(transaction),
               () -> assertEquals(idQuantumTgt.get(), transaction.getIdQuantumTgt()));
     //@formatter:on
+  }
+
+  @Then("transaction {string} has: idQuantumSrc = {StringExt}")
+  @Transactional(readOnly = true)
+  public void verifyTransactionReferencesSrcQuantum(String keyTransaction, GherkinType<String> idQuantumSrc) {
+    idQuantumSrc.setGetterForKey(inventoryDataHandler.idQuGetter);
+    ImTransaction transaction = inventoryDataHandler.getTransaction(keyTransaction);
+    //@formatter:off
+    assertAll(() -> assertNotNull(transaction),
+              () -> assertEquals(idQuantumSrc.get(), transaction.getIdQuantumSrc()));
+    //@formatter:on
+  }
+
+  @Then("transaction {string} has a new target quantum")
+  @Transactional(readOnly = true)
+  public void verifyTransactionReferencesQuantum(String keyTransaction) {
+
+    ImTransaction transaction = inventoryDataHandler.getTransaction(keyTransaction);
+    //@formatter:off
+    assertAll(
+        () -> assertNotNull(transaction.getIdQuantumTgt()),
+        () -> assertNotEquals(transaction.getIdQuantumSrc(), transaction.getIdQuantumTgt()));
+    
   }
 
   /**
