@@ -1,0 +1,17 @@
+
+
+*Goods Receiving Unplanned GR.unplanned goods receiving process
+
+**Goods Receiving Unplanned GR.unplanned goods receiving process with repeatBooking = 2
+
+***Goods Receiving Unplanned GR.unplanned goods receiving process with mix lu
+
+***IM.006-002: inventory/transaction/stalu - Inventory STALU SLAA.IM.006-002-0004: STALU on fixed location where the two selected articles are assigned
+
+Goods Issue Picking MDT MOP: 2 orders in 1 picking trip with parked distribution trip..Picking in ENTGR_01/ENTGR_04-ENT_H1_04 - two orders, one picking trip and parking the distribution trip.
+Goods Issue Picking MDT MOP: 1 order in 1 picking trip and distribution.Picking in ENTGR_01/ENTGR_04-ENT_H1_04 - one order, one picking trip, with distribution trip
+Goods Issue Picking MDT MOP: 2 orders in 1 picking trip with distribution.Picking in ENTGR_01/ENTGR_04-ENT_H1_04 - two orders, one picking trip, with distribution trip
+Goods Issue Picking MDT MOP: 2 orders in one picking trip and stock taking for small amounts.Picking in ENTGR_01/ENTGR_04-ENT_H1_01 - two orders, one picking trip, with distribution trip
+Goods Issue Picking MDT SOP.Picking SOP in ENTGR_01-ENT_H3_01 - one order, one picking trip
+Goods Issue Picking MDT SOP.Picking SOP in ENTGR_01-ENT_H3_01 - two orders, two picking trips
+Goods Issue Packing.Packing PAC500

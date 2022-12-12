@@ -1,0 +1,77 @@
+关于GI出现的问题
+
+
+
+
+1.关于feature的过程
+解析：两个order在同一条picking trip中， 同时也需要配备停放点
+
+
+
+
+创建quantum：
+qu1 - 5 pices 40067005 artvar1 ； H01-fach-106-2-008-02
+qu2 - 5 pices 40067024 artvar2 ； H01-fach-106-2-010-02
+
+GI200创建Order：
+Order1：
+Client Jonas Probst 12445:Order Orign/actual type is NORM
+save as JonasOrder
+PERSIST_ADDRESS_FROM_CUSTOMER is called for "JonasOrder" with: addressRef2 = "12445"
+向数据库申请调用该用户的地址信息，并填写在dialog中。
+向order1中添加40067005 3pices， 40067024 2 pices
+然后finish创建，启动OPP程序
+10秒后，checkGI100， Order1状态10；
+检查order1中相关item的data的状态
+
+以下这两个service不写系统也会自动生成，不重要
+PLAN_LOADING_FOR_ORDER 为order1分配相关的shipment"DHL_PAKET"
+CREATE_ASSIGNMENT GI_ORDER is called with: idWorkcenter = "P-401", priority = 500 
+When ASSIGN_STAGING_AREA_TO_ORDER is called with: idStagingArea = "V201", idLoading = null 
+
+
+接下来是SAC的过程，DTE自动进行，完成后状态更新为20  webservice：SAC_LIST_ORDER
+
+releasing reservation： webservice RES_LIST_ORDER：
+完成后qtyRea of 40067005/40067024 分别按照计划变成了3.0/2.0
+
+然后执行
+RELEASE_LIST_ORDER_ANYWAY_EP，一般系统是自动执行的
+此时Order1中的两种item各有一条picking item
+
+
+以上的步骤重新做一遍生成一个order2
+ 40067005/40067024 分别按照计划变成了2/3
+然后每一种item都生成了一条pickingitem
+
+
+
+
+
+这个时候两个order的 picking trip需要调用PICKING_TRIP_CREATION_EP服务生成
+每一个picking order条目都生成了picking trip
+ And picking trip "JonasPiTrip[0]" has: stat = "10", idCre = "basis", tsCre = now, idUpd = "basis", tsUpd = now
+这里，在pi100能看到相关的状态号是10.history中的时间戳也有数据
+
+验证完成后进入MDTpicking
+
+MDT picking的过程：
+picking的过程是以picking trip为单位进行的
+
+起先，在每一条PT的开始阶段，需要为每一个PO指定一个LU
+
+然后每一条picking trip都对应了一个source location， 这里需要在mdt上面确认工作人员到达了该location
+
+随后工作人员开始挑选和收纳商品进入LU当中， 每一个order中的每一个商品的条目对应着一次挑选
+
+当该PT对应的所有的picking都完成时，MDT中会显示最终的packing station
+
+
+
+
+
+
+
+
+
+

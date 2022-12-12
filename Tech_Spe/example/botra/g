@@ -1,0 +1,91 @@
+
+	@TEST
+	Scenario: IM.014-001-0014: Botra for KIT BOOK_QTY
+  InventoryBotraInput is filled correctly, but the target storage location (+area) is given AND the used configuration in dialog IM010 defines a different target storage location (+area) 
+   #Quantum1 
+  Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 5.0 pieces of article "40067005" has to be created
+		And the target location is "H01-FACH"-"106-2-001-01"
+		And the artvar is "1" and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00"	
+		And CREQU is called
+		And CREQU was successful, saved as "Qu1"; transaction saved as "Transaction1"
+	
+	#call BOTRA
+	When BOTRA is called to transfer quantum "Qu1" to target location "H01-FACH"-"106-2-001-02" with qtyType = "AVAILABLE" and bookingQty = 3.0
+	  And BOTRA input has: clProcess = "VAS"
+	  And BOTRA input has: typProcess = "VGR400"
+	  And BOTRA input has: stepProcess = "BUTTON_A"
+	  And BOTRA is called
+	Then WEBSERVICE fails: error = "IM-0059"
+		
+	#Clean-Up
+	Then delete quantum "Qu1"
+
+
+    	
+	Scenario: IM.014-001-0020: InventoryBotraInput is filled correctly, but the target storage location does not have enough capacity for the quantum → OM_0003
+   #Quantum1 
+  Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 85.0 pieces of article "40067005" has to be created
+		And the target location is "H01-FACH"-"106-2-001-01"
+		And the artvar is "1" and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00"	
+		And CREQU is called
+		And CREQU was successful, saved as "Qu1"; transaction saved as "Transaction1"
+		#Quantum2 
+	Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 85.0 pieces of article "40067005" has to be created
+		And the target location is "H01-FACH"-"106-2-001-02"
+		And the artvar is "1" and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00"	
+		And CREQU is called
+		And CREQU was successful, saved as "Qu2"; transaction saved as "Transaction2"
+	
+	#call BOTRA
+	When BOTRA is called to transfer quantum "Qu1" to target location "H03-PUFFER"-"P-301-112" with qtyType = "AVAILABLE" and bookingQty = 85.0
+	  And BOTRA is called
+	When BOTRA is called to transfer quantum "Qu2" to target location "H03-PUFFER"-"P-301-112" with qtyType = "AVAILABLE" and bookingQty = 85.0
+	  And BOTRA is called
+	Then WEBSERVICE fails: error = "OM-0003"
+		
+	#Clean-Up
+	Then delete quantum "Qu1"
+	Then delete quantum "Qu2"
+	
+	
+		Scenario: IM.014-001-0021: InventoryBotraInput is filled correctly, but the target load unit does not have enough capacity for the quantum → 
+	
+	   #Quantum1 
+  Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 40.0 pieces of article "40067005" has to be created
+		And the target location is "H01-FACH"-"106-2-001-01"
+		And the artvar is "1" and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00"	
+		And CREQU is called
+		And CREQU was successful, saved as "Qu1"; transaction saved as "Transaction1"
+		
+		#Load Unit1
+	Given a load unit from storage location "QUELLE-LAG"-"Q-001" to storage location "H01-KLAER"-"K-101" has to be created
+		And the load unit type is "KOMB"
+	When CRELU is called
+	Then CRELU was successful, saved as "Lu1"; transaction saved as "Transaction"
+	
+	#call BOTRA
+	When BOTRA is called to transfer quantum "Qu1" to a load unit "Lu1" with qtyType = "AVAILABLE" and bookingQty = 33.0
+	  And BOTRA is called
+	Then WEBSERVICE fails: error = "IM-0046"
+		
+	#Clean-Up
+	Then delete load unit "Lu1"
+	Then delete quantum "Qu1"
+	
+	@TEST
+		Scenario: TEST
+	
+	   #Quantum1 
+  Given a quantum from storage location "QUELLE-LAG"-"Q-001" with 101.0 pieces of article "55534013" has to be created
+		And the target location is "H01-FACH"-"106-2-001-01"
+		And the artvar is null and stock type is "AV" and lock type is "------" and QC status is "00" and customs status is "00"	
+		And CREQU is called
+		And CREQU was successful, saved as "Qu1"; transaction saved as "Transaction1"
+		
+		#call BOTRA
+	When BOTRA is called to transfer quantum "Qu1" to target location "H03-PUFFER"-"P-301-112" with qtyType = "AVAILABLE" and bookingQty = 101.0
+	  And BOTRA is called
+	Then WEBSERVICE fails: error = "OM-0003"
+		
+		#Clean-Up
+	Then delete quantum "Qu1"

@@ -73,9 +73,8 @@ Falls ein Quant kein WE-Datum aufweist, werden alle WE-Daten aus dem anderen Qua
 
 IMloadunithandler
 
-
-
-
+IMD400
+在warehouse management中，分为src和des区，这些地方是用于记录确实的或者多出的quantum，比如有时候放错了地方，就可以通过这个dialog来记录和更正
 
 
 

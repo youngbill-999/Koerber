@@ -1,0 +1,239 @@
+package com.inconso.bend.inwmsx.it.general;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import com.inconso.bend.batch.pers.model.BmBatch;
+import com.inconso.bend.batch.pers.rep.BmBatchRep;
+import com.inconso.bend.core.service.api.ServiceInput;
+import com.inconso.bend.inventory.pers.model.ImHighLevelReservation;
+import com.inconso.bend.inventory.pers.model.ImLoadUnit;
+import com.inconso.bend.inventory.pers.model.ImQuantum;
+import com.inconso.bend.inventory.pers.rep.ImHighLevelReservationRep;
+import com.inconso.bend.inventory.pers.rep.ImLoadUnitRep;
+import com.inconso.bend.inventory.pers.rep.ImQuantumRep;
+import com.inconso.bend.inventory.service.transaction.api.InventoryRelluInput;
+import com.inconso.bend.inventory.service.transaction.api.InventoryTransactionDesc;
+import com.inconso.bend.topology.pers.gen.TopStorageLocationDynPk;
+import com.inconso.bend.topology.pers.model.TopStorageLocationDyn;
+import com.inconso.bend.topology.pers.rep.TopStorageLocationDynRep;
+
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+
+public class CucumberHooks {
+
+  private static final String          IT_SERVER                 = "ifbbend06";
+  private static final boolean         IS_IT_SERVER              = isItServer();
+  private static final boolean         IS_IMPLICIT_SETUP         = false;
+  private static final int             HOOK_ORDER_SETUP_TEARDOWN = 0;
+  private static SetupOption           currentSetup              = SetupOption.NONE;
+
+  @Autowired
+  private WebserviceClient             webserviceClient;
+  @Autowired
+  private ImQuantumRep                 imQuantumRep;
+  @Autowired
+  private ImLoadUnitRep                imLoadUnitRep;
+  @Autowired
+  private ImHighLevelReservationRep    imHighLevelReservationRep;
+  @Autowired
+  private TopStorageLocationDynRep     topStorageLocationDynRep;
+  @Autowired
+  private BmBatchRep                   bmBatchRep;
+  @Autowired
+  @PersistenceContext
+  private EntityManager                em;
+  @Autowired
+  private GeneralHelper                generalHelper;
+  @Autowired
+  private CucumberReport               cucumberReport;
+
+  private List<ImQuantum>              quantumList;
+  private List<ImLoadUnit>             loadUnitList;
+  private List<TopStorageLocationDyn>  storageLocationDynList;
+  private List<ImHighLevelReservation> imHighLevelReservationList;
+  private List<BmBatch>                batchList;
+
+  public enum SetupOption {
+    NONE, DEFAULT
+  }
+
+  /**
+   * Checks if current environment is the integration test environment specified in "IT_SERVER"
+   */
+  private static boolean isItServer() {
+    String springDatasourceUrl = System.getProperty("spring.datasource.url");
+
+    Pattern pattern = Pattern.compile("//" + IT_SERVER + "(?=\\b)");
+    Matcher matcher = pattern.matcher(springDatasourceUrl);
+
+    boolean result = matcher.find();
+    return result;
+  }
+
+  private static void setup(SetupOption setupOption) {
+    // ToDo
+  }
+
+  /**
+   * Ensures that the current environment is "integration test" before setup in order to avoid accidentally messing up the database in other
+   * environments.
+   */
+  private static void setupIfItServer(SetupOption setupOption) {
+    if (IS_IT_SERVER) {
+      currentSetup = setupOption;
+      setup(currentSetup);
+    }
+  }
+
+  @Before(value = "not @setup", order = HOOK_ORDER_SETUP_TEARDOWN)
+  public void setupImplicit() {
+    if (IS_IMPLICIT_SETUP || currentSetup != SetupOption.DEFAULT) {
+      setupIfItServer(SetupOption.DEFAULT);
+    }
+  }
+
+  @Before(value = "@setup and @setupDefault", order = HOOK_ORDER_SETUP_TEARDOWN)
+  public void setupDefault() {
+    setupIfItServer(SetupOption.DEFAULT);
+  }
+
+  @AfterStep
+  public void output(Scenario scenario) {
+    cucumberReport.logMessage(scenario);
+  }
+
+  /*
+   * 
+   * system level clearing for the test env clear new created qu and lu after test and keep defaut qu and lu stored in data base
+   * 
+   * 
+   */
+  @Before("@defaultdatabased")
+  @Transactional(readOnly = true)
+  public void loadQuAndLu() {
+    quantumList = imQuantumRep.findAll();
+    loadUnitList = imLoadUnitRep.findAll();
+    storageLocationDynList = loadExistingTopStorageLocationDyns();
+    batchList = bmBatchRep.findAll();
+  }
+
+  @After("@defaultdatabased")
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  public void clearQuAndLu() {
+
+    List<ImLoadUnit> imLoadUnitList = imLoadUnitRep.findAll();
+    imLoadUnitList.removeAll(loadUnitList);
+    if (imLoadUnitList.size() > 0) {
+      // imLoadUnitRep.delete(imLoadUnitList);
+      deleteLoadUnits(imLoadUnitList);
+    }
+
+    List<ImQuantum> imQuantumList = imQuantumRep.findAll();
+    imQuantumList.removeAll(quantumList);
+    if (imQuantumList.size() > 0) {
+      imQuantumRep.delete(imQuantumList);
+    }
+
+    List<TopStorageLocationDyn> topStorageLocationDynsList = loadExistingTopStorageLocationDyns();
+    topStorageLocationDynsList.removeAll(storageLocationDynList);
+    if (topStorageLocationDynsList.size() > 0) {
+      List<TopStorageLocationDynPk> topStorageLocationDynsListPk = filterDynPks();
+      cancelStockTacking(topStorageLocationDynsListPk);
+    }
+
+    List<BmBatch> bmBatchList = bmBatchRep.findAll();
+    bmBatchList.removeAll(batchList);
+    if (bmBatchList.size() > 0) {
+      bmBatchRep.delete(bmBatchList);
+    }
+
+  }
+
+  private void deleteLoadUnits(List<ImLoadUnit> list) {
+    for (int i = 0; i < list.size(); i++) {
+      String id = list.get(i).getImLoadUnitPk().getIdLu();
+      deleteLuWebService(id);
+    }
+  }
+
+  private void cancelStockTacking(List<TopStorageLocationDynPk> list) {
+
+    CriteriaBuilder criteriaBuilder = this.em.getCriteriaBuilder();
+    CriteriaUpdate<TopStorageLocationDyn> update = criteriaBuilder.createCriteriaUpdate(TopStorageLocationDyn.class);
+    Root<TopStorageLocationDyn> root = update.from(TopStorageLocationDyn.class);
+    update.set(root.get("flgStockTaking"), "0");
+    for (int i = 0; i < list.size(); i++) {
+      update.where(criteriaBuilder.equal(root.get("topStorageLocationDynPk"), list.get(i)));
+
+      this.em.createQuery(update).executeUpdate();
+    }
+  }
+
+  /*
+   * 
+   * system level clearing for the test env :clear new created high level reservation after test and keep defaut data stored in data base
+   *
+   */
+  @Before("@cleanHLReservation")
+  @Transactional(readOnly = true)
+  public void loadDefaultHlRes() {
+
+    imHighLevelReservationList = imHighLevelReservationRep.findAll();
+
+  }
+
+  @After("@cleanHLReservation")
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  public void clearHlRes() {
+
+    List<ImHighLevelReservation> imHlResList = imHighLevelReservationRep.findAll();
+    imHlResList.removeAll(imHighLevelReservationList);
+    if (imHlResList.size() > 0) {
+      imHighLevelReservationRep.delete(imHlResList);
+    }
+
+  }
+
+  private List<TopStorageLocationDyn> loadExistingTopStorageLocationDyns() {
+    List<TopStorageLocationDyn> tempList = topStorageLocationDynRep.findAll((root, query, cb) -> {
+      Predicate where = cb.equal(root.get("flgStockTaking"), "1");
+      return cb.and(where);
+    });
+
+    return tempList;
+  }
+
+  private List<TopStorageLocationDynPk> filterDynPks() {
+    List<TopStorageLocationDynPk> tempList = new ArrayList<>();
+    for (int i = 0; i < storageLocationDynList.size(); i++) {
+      tempList.add(storageLocationDynList.get(i).getTopStorageLocationDynPk());
+    }
+    return tempList;
+  }
+
+  private void deleteLuWebService(String idLu) {
+    InventoryRelluInput.Builder relluInputBuilder = new InventoryRelluInput.Builder(generalHelper.getIdSite(), "DIALOG", "IM400", "*", "*", idLu,
+        "CLEAN_IT").withStorageLocationTgt("SENKE-LAG", "S-001");
+
+    ServiceInput<InventoryRelluInput> inputService = new ServiceInput<>();
+    inputService.setContext("SITE", generalHelper.getIdSite());
+    InventoryRelluInput input = relluInputBuilder.build();
+    inputService.setData(input);
+    webserviceClient.call(InventoryTransactionDesc.SERVICE, InventoryTransactionDesc.RELLU_EP, inputService);
+
+  }
+}
