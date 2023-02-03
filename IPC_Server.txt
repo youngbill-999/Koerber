@@ -1,0 +1,22 @@
+RPC, JMS, Java RMI
+远程过程调用被设计为在应用程序间通信的平台中立的方式，它不理会操作系统之间以及语言之间的差异。即 RPC 支持多种语言，而 RMI 只支持 Java 写的应用程序。
+RMI是java的RPC， 支持面向对象。 而RPC不允许返回对象
+JMS:是一种java API，它允许应用程序创建发送和读取消息。 和RMI的主要区别是：
+采用 JMS 服务，对象是在物理上被异步从网络的某个 JVM 上直接移动到另一个 JVM 上。而 RMI 对象是绑定在本地 JVM 中，只有函数参数和返回值是通过网络传送的。
+RMI是本地的，JMS是为distributed system 而生的
+
+Java message service (JMS)
+A kind of RPC systems, it includes java RMI, RMI is java s RPC.
+caller必须block and wait直到消息处理完成。 所以这是一紧耦合的结构。只能通过多线程来解耦合。
+另一大特征是，RPC system要求caller和server要同时available。这样又使得耦合度增加。
+这就需要消息中间件 MQ。
+msg model： point-point, publish-subscribe
+
+
+IPC-Interprocess Communication(Kmotion异步消息处理体系)
+1.组成：
+Server-JMS Consumers
+Job-IPC070中现实的不同的job, 由scheduler来配置，并且触发。也可以通过run server来触发。  java-jobs（定期执行）, script-jobs（手动执行）
+Time-Logging
+
+Job是client(send request) and Server is consumer(execution).
